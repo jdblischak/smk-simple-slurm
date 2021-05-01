@@ -1,0 +1,7 @@
+name: smk
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - snakemake>=5.11.0
