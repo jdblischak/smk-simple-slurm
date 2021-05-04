@@ -48,6 +48,8 @@ profile for Snakemake][slurm-official].
 
 * Limited support for [multi-cluster setups][multi_cluster]
 
+* Requires Snakemake version [5.15.0][] or later (released 2020-04-21)
+
 ## Quick start
 
 1. Download the configuration file `config.yaml` to your Snakemake project. It
@@ -271,6 +273,7 @@ you like. No need to attribute or cite this repo, but of course it comes with no
 warranties. To make it official, its released under the [CC0][] license. See
 [`LICENSE`](LICENSE) for details.
 
+[5.15.0]: https://snakemake.readthedocs.io/en/stable/project_info/history.html#id86
 [CC0]: https://creativecommons.org/publicdomain/zero/1.0/
 [cluster-config]: https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html#cluster-configuration-deprecated
 [cluster-execution]: https://snakemake.readthedocs.io/en/stable/executing/cluster.html
