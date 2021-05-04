@@ -46,6 +46,8 @@ profile for Snakemake][slurm-official].
 * Can't use [group jobs][grouping], but they [aren't easy to use in the first
   place][grouping-issue]
 
+* Limited support for [multi-cluster setups][multi_cluster]
+
 ## Quick start
 
 1. Download the configuration file `config.yaml` to your Snakemake project. It
@@ -203,11 +205,64 @@ To use one of these status scripts:
 
 1. Download the script to your profile directory where `config.yaml` is located
 
+1. Make the script executable, e.g. `chmod +x status-sacct.sh`
+
 1. Add the field `cluster-status` to your `config.yaml`, e.g. `cluster-status:
    status-sacct.sh`
 
 1. Add the flag `--parsable` to your `sbatch` command (requires Slurm version
    14.03.0rc1 or later)
+
+### Multiple clusters
+
+It's possible for Slurm to submit jobs to [multiple different
+clusters][multi_cluster]. Below is my advice on how to configure this. However,
+I've worked with multiple HPC clusters running Slurm, and have never encountered
+this sitation. Thus I'd appreciate any contributions to improve the
+documentation below.
+
+1. If you have access to multiple clusters, but only need to submit jobs to the
+   default cluster, then you shouldn't have to modify anything in this profile
+
+1. If you want to always submit your jobs to a cluster other than the default,
+   or use mutliple clusters, then pass the option `--clusters` to `sbatch`, e.g.
+   to submit your jobs to either cluster "c1" or "c2"
+
+    ```yaml
+    cluster:
+      mkdir -p logs/{rule} &&
+      sbatch
+        --clusters=c1,c2
+    ```
+
+1. To set a default cluster and override it for specific rules, use
+   `--default-resources`. For example, to run on "c1" by default but "c2" for a
+   specific rule:
+
+    ```yaml
+    # config.yaml
+    cluster:
+      mkdir -p logs/{rule} &&
+      sbatch
+        --clusters={resources.clusters}
+    default-resources:
+      - clusters=c1
+    ```
+
+    ```python
+    # Snakefile
+    rule different_cluster:
+      resources:
+        clusters = "c2"
+    ```
+
+1. It's currently not possible to use a custom cluster status script with
+   multi-cluster. After you add the flag `--parsable` to `sbatch`, it will
+   return `jobid;cluster_name`. I adapted `status-sacct.sh` to handle this
+   situation. However, Snakemake doesn't quote the argument, so the semi-colon
+   causes it to try and execute a program that is the name of the cluster.
+   Please see [`examples/multi-cluster/`](examples/multi-cluster) to try out my
+   latest attempt.
 
 ## License
 
@@ -222,5 +277,6 @@ warranties. To make it official, its released under the [CC0][] license. See
 [cluster-status]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-status
 [grouping]: https://snakemake.readthedocs.io/en/stable/executing/grouping.html
 [grouping-issue]: https://github.com/snakemake/snakemake/issues/872
+[multi_cluster]: https://slurm.schedmd.com/multi_cluster.html
 [no-cluster-status]: http://bluegenes.github.io/Using-Snakemake_Profiles/
 [slurm-official]: https://github.com/Snakemake-Profiles/slurm

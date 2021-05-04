@@ -1,0 +1,6 @@
+rule cluster_name:
+    output:
+        "output/cluster.txt"
+    shell:
+        "sleep 5s ; "
+        "echo $SLURM_CLUSTER_NAME > {output}"

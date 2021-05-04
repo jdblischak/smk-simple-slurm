@@ -1,0 +1,10 @@
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --clusters=slurm_cluster
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+    --parsable
+jobs: 1
+printshellcmds: True
+cluster-status: status-sacct-multi.sh

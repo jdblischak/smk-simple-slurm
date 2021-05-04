@@ -5,7 +5,9 @@ script to `--cluster-status`. You can either do this at the command-line or add
 it to your `config.yml`.
 
 **Important:** To use any of these, you must add the flag `--parsable` to the
-call to `sbatch` in the field `cluster` in `config.yml`.
+call to `sbatch` in the field `cluster` in `config.yml`
+
+**Important:** These scripts must be executable: `chmod +x <script>`
 
 Sources:
 
