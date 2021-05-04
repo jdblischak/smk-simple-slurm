@@ -205,5 +205,5 @@ rule more_time:
         time = "180"
 ```
 
-See [examples/time-integer][] and [examples/time-string][] for examples you can
+See [examples/time-integer](examples/time-integer) and [examples/time-string](examples/time-string) for examples you can
 play with.
