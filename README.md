@@ -52,8 +52,8 @@ profile for Snakemake][slurm-official].
 
 ## Quick start
 
-1. Download the configuration file `config.yaml` to your Snakemake project. It
-   has to be in a subdirectory, e.g. `simple`.
+1. Download the configuration file [`config.yaml`](simple/config.yaml) to your
+   Snakemake project. It has to be in a subdirectory, e.g. `simple/`
 
 1. Open it in your favorite text editor and replace all the placeholders
    surrounded in angle brackets (`<>`) with the options you use to submit jobs
