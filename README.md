@@ -143,7 +143,7 @@ it's not required. From Slurm 19.05.7:
 > formats include "minutes", "minutes:seconds", "hours:minutes:seconds",
 > "days-hours", "days-hours:minutes" and "days-hours:minutes:seconds".
 
-Thus to instead use `minutes`, you could acheive the same effect as above with:
+Thus to instead use `minutes`, you could achieve the same effect as above with:
 
 ```yaml
 cluster:
@@ -175,7 +175,7 @@ See [`examples/time-integer/`](examples/time-integer/) and
 
 ### Using a cluster status script
 
-By default, snakemake can monitor jobs sumbitted to slurm. I realized this when
+By default, snakemake can monitor jobs submitted to slurm. I realized this when
 reading this detailed [blog post][no-cluster-status], in which the author
 decided not to use the `cluster-status.py` script provided by the [official
 Slurm profile][slurm-official]. Thus if you don't find that your jobs are
@@ -218,14 +218,14 @@ To use one of these status scripts:
 It's possible for Slurm to submit jobs to [multiple different
 clusters][multi_cluster]. Below is my advice on how to configure this. However,
 I've worked with multiple HPC clusters running Slurm, and have never encountered
-this sitation. Thus I'd appreciate any contributions to improve the
+this situation. Thus I'd appreciate any contributions to improve the
 documentation below.
 
 1. If you have access to multiple clusters, but only need to submit jobs to the
    default cluster, then you shouldn't have to modify anything in this profile
 
 1. If you want to always submit your jobs to a cluster other than the default,
-   or use mutliple clusters, then pass the option `--clusters` to `sbatch`, e.g.
+   or use multiple clusters, then pass the option `--clusters` to `sbatch`, e.g.
    to submit your jobs to either cluster "c1" or "c2"
 
     ```yaml

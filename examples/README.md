@@ -1,6 +1,6 @@
 # Examples
 
-Each directory contains an exampe usage of the simple slurm profile. You can run
+Each directory contains an example usage of the simple slurm profile. You can run
 them on your cluster to confirm the expected behavior.
 
 * `dynamic-resources` - Increase memory for a rule on restart after each failed
