@@ -6,6 +6,9 @@ them on your cluster to confirm the expected behavior.
 * `dynamic-resources` - Increase memory for a rule on restart after each failed
   attempt
 
+* `jobs-per-second` - Measures how many jobs Snakemake can submit to Slurm per
+  second
+
 * `out-of-memory` - Triggers an out-of-memory error. Snakemake can handle this
   by default
 
