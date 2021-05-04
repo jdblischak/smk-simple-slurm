@@ -6,6 +6,7 @@
 * [Limitations](#limitations)
 * [Quick start](#quick-start)
 * [Customizations](#customizations)
+* [License](#license)
 
 The option [`--cluster-config`][cluster-config] is deprecated, but it's still
 possible to set default and rule-specific resources for [submitting jobs to a
@@ -208,6 +209,14 @@ To use one of these status scripts:
 1. Add the flag `--parsable` to your `sbatch` command (requires Slurm version
    14.03.0rc1 or later)
 
+## License
+
+This is all boiler plate code. Please feel free to use it for whatever purpose
+you like. No need to attribute or cite this repo, but of course it comes with no
+warranties. To make it official, its released under the [CC0][] license. See
+[`LICENSE`](LICENSE) for details.
+
+[CC0]: https://creativecommons.org/publicdomain/zero/1.0/
 [cluster-config]: https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html#cluster-configuration-deprecated
 [cluster-execution]: https://snakemake.readthedocs.io/en/stable/executing/cluster.html
 [cluster-status]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-status
