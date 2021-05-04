@@ -1,0 +1,5 @@
+rule timeout:
+    resources:
+        time="0-00:00:10"
+    shell:
+        "sleep 30s"

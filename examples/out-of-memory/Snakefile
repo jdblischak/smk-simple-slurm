@@ -1,0 +1,13 @@
+rule out_of_memory:
+    output:
+        "big.txt"
+    resources:
+        mem_mb=100
+    shell:
+        "for i in `seq 1000000` ; "
+        "do "
+        "  echo $RANDOM ; "
+        "done | "
+        " sort -n | "
+        "tail > "
+        "{output}"

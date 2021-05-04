@@ -70,6 +70,7 @@ described more below.
 
 ### Disadvantages
 
+* No automated tests
 * Can't use [group
   jobs](https://snakemake.readthedocs.io/en/stable/executing/grouping.html), but
   they [aren't easy to use in the first
@@ -108,3 +109,101 @@ jobs. You can choose which one you'd like to use:
 To use one of these status scripts, add it to `config.yaml`, e.g.
 `cluster-status: ../extras/status-sacct.sh`. Also, you will need to add the flag
 `--parsable` to your `sbatch` command.
+
+## Customizing arguments to `sbatch`
+
+### A fixed argument, e.g. `--account`
+
+To pass an additional argument to `sbatch` that will be fixed across all job
+submissions, add it directly to the arguments passed to `sbatch` in the field
+`cluster`. For example, to specify an account to use for all job submissions,
+you can add the `--account` argument as shown below:
+
+```yaml
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --partition={resources.partition}
+    --qos={resources.qos}
+    --cpus-per-task={threads}
+    --mem={resources.mem_mb}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+    --account=myaccount
+```
+
+### A variable argument, e.g. `--time`
+
+To pass an additional argument to `sbatch` that can vary across job submissions,
+add it to the arguments passed to `sbatch` in the field `cluster`, list a
+default value in the field `default-resources`, and update any rules that
+require a value different from the default.
+
+For example, the `config.yaml` below sets a default time of 1 hour, and the
+example rule overrides this default for a total of 3 hours. Note that the quotes
+around the default time specification are required, even though you don't need
+quotes when specifying the default for either `partition` or `qos`.
+
+```yaml
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --partition={resources.partition}
+    --qos={resources.qos}
+    --cpus-per-task={threads}
+    --mem={resources.mem_mb}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+    --time={resources.time}
+default-resources:
+  - partition=<name-of-default-partition>
+  - qos=<name-of-quality-of-service>
+  - mem_mb=1000
+  - time="01:00:00"
+```
+
+```python
+# A rule in Snakefile
+rule more_time:
+    resources:
+        time = "03:00:00"
+```
+
+Note that `sbatch` accepts time defined using various formats. Above I used
+`hours:minutes:seconds`, but the simple slurm profile is agnostic to how you
+choose to configure this. It's a good idea to be consistent across rules, but
+it's not required. From Slurm 19.05.7:
+
+> A time limit of zero requests that no time limit be imposed. Acceptable time
+> formats include "minutes", "minutes:seconds", "hours:minutes:seconds",
+> "days-hours", "days-hours:minutes" and "days-hours:minutes:seconds".
+
+Thus to instead use `minutes`, you could acheive the same effect as above with:
+
+```yaml
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --partition={resources.partition}
+    --qos={resources.qos}
+    --cpus-per-task={threads}
+    --mem={resources.mem_mb}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+    --time={resources.time}
+default-resources:
+  - partition=<name-of-default-partition>
+  - qos=<name-of-quality-of-service>
+  - mem_mb=1000
+  - time=60
+```
+
+```python
+# A rule in Snakefile
+rule more_time:
+    resources:
+        time = "180"
+```
+
+See [examples/time-integer][] and [examples/time-string][] for examples you can
+play with.

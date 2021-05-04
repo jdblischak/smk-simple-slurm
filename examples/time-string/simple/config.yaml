@@ -1,0 +1,10 @@
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --time={resources.time}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+default-resources:
+  - time="0-00:05:00"
+jobs: 2
+printshellcmds: True

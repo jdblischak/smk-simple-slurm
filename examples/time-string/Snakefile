@@ -1,0 +1,18 @@
+rule all:
+    input:
+        "output/default.txt",
+        "output/more.txt"
+
+rule time_default:
+    output:
+        "output/default.txt"
+    shell:
+        "scontrol show job $SLURM_JOBID | grep TimeLimit > {output}"
+
+rule time_more:
+    output:
+        "output/more.txt"
+    resources:
+        time = "0-00:10:00"
+    shell:
+        "scontrol show job $SLURM_JOBID | grep TimeLimit > {output}"

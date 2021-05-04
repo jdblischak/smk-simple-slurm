@@ -1,0 +1,5 @@
+rule dynamic_resources:
+    resources:
+        mem_mb = lambda _, attempt: 1000 + ((attempt - 1) * 2000)
+    shell:
+        "exit 1"
