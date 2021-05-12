@@ -54,7 +54,8 @@ profile for Snakemake][slurm-official].
   the wildcards or remove the wildcards from the pattern passed to `--output`.
   Note that you can still submit wildcards containing `/` to `--job-name`
 
-* Requires Snakemake version [5.15.0][] or later (released 2020-04-21)
+* Requires Snakemake version [5.15.0][] or later (released 2020-04-21) (you can
+  test this directly in your `Snakefile` with [`min_version()`][min_version])
 
 ## Quick start
 
@@ -286,6 +287,7 @@ warranties. To make it official, its released under the [CC0][] license. See
 [cluster-status]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-status
 [grouping]: https://snakemake.readthedocs.io/en/stable/executing/grouping.html
 [grouping-issue]: https://github.com/snakemake/snakemake/issues/872
+[min_version]: https://snakemake.readthedocs.io/en/stable/snakefiles/writing_snakefiles.html#depend-on-a-minimum-snakemake-version
 [multi_cluster]: https://slurm.schedmd.com/multi_cluster.html
 [no-cluster-status]: http://bluegenes.github.io/Using-Snakemake_Profiles/
 [slurm-official]: https://github.com/Snakemake-Profiles/slurm
