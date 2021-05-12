@@ -46,7 +46,9 @@ profile for Snakemake][slurm-official].
 * Can't use [group jobs][grouping], but they [aren't easy to use in the first
   place][grouping-issue]
 
-* Limited support for [multi-cluster setups][multi_cluster]
+* Limited support for [multi-cluster setups][multi_cluster] (please upvote my
+  [PR][pr-multi-cluster] to enable support for using custom scripts with
+  `--cluster-status` in a multi-cluster setup)
 
 * Wildcards can't contain `/` if you want to use them in the name of the Slurm
   log file. This is a Slurm requirement (which makes sense, since it has to
@@ -271,7 +273,8 @@ documentation below.
    situation. However, Snakemake doesn't quote the argument, so the semi-colon
    causes it to try and execute a program that is the name of the cluster.
    Please see [`examples/multi-cluster/`](examples/multi-cluster) to try out my
-   latest attempt.
+   latest attempt. Also, please upvote my [PR][pr-multi-cluster] to fix this in
+   Snakemake.
 
 ## License
 
@@ -290,4 +293,5 @@ warranties. To make it official, its released under the [CC0][] license. See
 [min_version]: https://snakemake.readthedocs.io/en/stable/snakefiles/writing_snakefiles.html#depend-on-a-minimum-snakemake-version
 [multi_cluster]: https://slurm.schedmd.com/multi_cluster.html
 [no-cluster-status]: http://bluegenes.github.io/Using-Snakemake_Profiles/
+[pr-multi-cluster]: https://github.com/snakemake/snakemake/pull/977
 [slurm-official]: https://github.com/Snakemake-Profiles/slurm
