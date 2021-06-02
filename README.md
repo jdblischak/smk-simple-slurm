@@ -183,6 +183,8 @@ rule more_time:
 
 See [`examples/time-integer/`](examples/time-integer/) and
 [`examples/time-string/`](examples/time-string/) for examples you can play with.
+Note that specifying the time as a string requires a minimum Snakemake version
+of 5.15.0.
 
 ### Using a cluster status script
 
