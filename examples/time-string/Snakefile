@@ -2,21 +2,24 @@ import snakemake.utils
 
 snakemake.utils.min_version("5.15.0")
 
+
 rule all:
     input:
         "output/default.txt",
-        "output/more.txt"
+        "output/more.txt",
+
 
 rule time_default:
     output:
-        "output/default.txt"
+        "output/default.txt",
     shell:
         "scontrol show job $SLURM_JOBID | grep TimeLimit > {output}"
 
+
 rule time_more:
     output:
-        "output/more.txt"
+        "output/more.txt",
     resources:
-        time = "0-00:10:00"
+        time="0-00:10:00",
     shell:
         "scontrol show job $SLURM_JOBID | grep TimeLimit > {output}"

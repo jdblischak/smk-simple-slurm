@@ -3,33 +3,42 @@ import time
 
 n = 1000
 
-localrules: submit_times, jobs_per_second
+
+localrules:
+    submit_times,
+    jobs_per_second,
+
 
 rule all:
     input:
-        "output/jobs-per-second.txt"
+        "output/jobs-per-second.txt",
+
 
 rule jobs_per_second:
     input:
-        "output/submit-times.txt"
+        "output/submit-times.txt",
     output:
-        "output/jobs-per-second.txt"
+        "output/jobs-per-second.txt",
     script:
         "summarize.py"
 
+
 rule submit_times:
     input:
-        expand("output/{rep}.txt", rep = range(1, n + 1))
+        expand("output/{rep}.txt", rep=range(1, n + 1)),
     output:
-        "output/submit-times.txt"
+        "output/submit-times.txt",
     shell:
         "cat {input} > {output}"
 
+
 rule submit:
     output:
-        "output/{file}"
+        "output/{file}",
     params:
-        submit_time = math.floor(time.time())
+        submit_time=math.floor(time.time()),
     shell:
-        "echo {params.submit_time} > {output} ; "
-        "sleep 5"
+        """
+        echo {params.submit_time} > {output}
+        sleep 5
+        """

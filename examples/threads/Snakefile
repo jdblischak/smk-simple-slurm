@@ -1,19 +1,25 @@
 rule all:
     input:
         "output/default.txt",
-        "output/more.txt"
+        "output/more.txt",
+
 
 rule threads_default:
     output:
-        "output/default.txt"
+        "output/default.txt",
     shell:
-        "echo Snakemake requested {threads} CPUs > {output} ; "
-        "scontrol show job $SLURM_JOBID | grep NumCPUs >> {output}"
+        """
+        echo Snakemake requested {threads} CPUs > {output}
+        scontrol show job $SLURM_JOBID | grep NumCPUs >> {output}
+        """
+
 
 rule threads_more:
     output:
-        "output/more.txt"
+        "output/more.txt",
     threads: 8
     shell:
-        "echo Snakemake requested {threads} CPUs > {output} ; "
-        "scontrol show job $SLURM_JOBID | grep NumCPUs >> {output}"
+        """
+        echo Snakemake requested {threads} CPUs > {output}
+        scontrol show job $SLURM_JOBID | grep NumCPUs >> {output}
+        """

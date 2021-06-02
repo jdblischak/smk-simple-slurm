@@ -2,8 +2,9 @@ import snakemake.utils
 
 snakemake.utils.min_version("5.15.0")
 
+
 rule timeout:
     resources:
-        time="0-00:00:10"
+        time="0-00:00:10",
     shell:
         "sleep 30s"

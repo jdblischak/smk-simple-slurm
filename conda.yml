@@ -4,4 +4,5 @@ channels:
   - bioconda
   - nodefaults
 dependencies:
+  - snakefmt
   - snakemake>=5.15.0
