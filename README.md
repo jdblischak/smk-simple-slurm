@@ -13,7 +13,9 @@ possible to set default and rule-specific resources for [submitting jobs to a
 remote scheduler][cluster-execution] using a combination of
 `--default-resources` and the `resources` field in individual rules. This
 profile is a simplified alternative to the more comprehensive [official Slurm
-profile for Snakemake][slurm-official].
+profile for Snakemake][slurm-official]. For more background, this [blog
+post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
+`--cluster-config`.
 
 ## Features
 
@@ -297,4 +299,5 @@ warranties. To make it official, its released under the [CC0][] license. See
 [multi_cluster]: https://slurm.schedmd.com/multi_cluster.html
 [no-cluster-status]: http://bluegenes.github.io/Using-Snakemake_Profiles/
 [pr-multi-cluster]: https://github.com/snakemake/snakemake/pull/977
+[sichong-post]: https://www.sichong.site/2020/02/25/snakemake-and-slurm-how-to-manage-workflow-with-resource-constraint-on-hpc/
 [slurm-official]: https://github.com/Snakemake-Profiles/slurm
