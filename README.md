@@ -40,8 +40,9 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
 * By default it understands the job statuses PENDING, RUNNING, COMPLETING, and
   can even detect when a job fails from an out of memory error
 
-* (Optional) You can pass a simple script (see [`extras/`](extras/)) to
-  [`--cluster-status`][cluster-status] to handle the job statuses TIMEOUT and CANCELED
+* (Optional, but recommended) You can pass a simple script (see
+  [`extras/`](extras/)) to [`--cluster-status`][cluster-status] to handle the
+  job statuses TIMEOUT and CANCELED
 
 ## Limitations
 
