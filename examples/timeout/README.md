@@ -1,8 +1,8 @@
 # Handle timeout error with `--cluster-status`
 
-Snakemake can **not** handle timeout errors from Slurm by default. You need to
-pass a custom script to `--cluster-status` to process timeout errors. You have
-multiple options for this custom script in `extras/`.
+Snakemake can **not** handle timeout errors from Slurm by default (`TIMEOUT`).
+You need to pass a custom script to `--cluster-status` to process timeout
+errors. You have multiple options for this custom script in `extras/`.
 
 The example has has one rule that requests 10 seconds of runtime and sleeps for
 30 seconds. By default Snakemake will fail to see the failed job and stall

@@ -37,12 +37,12 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
 * No reliance on the deprecated option `--cluster-config` to customize job
   resources
 
-* By default it understands the job statuses PENDING, RUNNING, COMPLETING, and
-  can even detect when a job fails from an out of memory error
+* By default it relies on Snakemake's built-in ability to understand the job
+  statuses PENDING, RUNNING, COMPLETING, and OUT_OF_MEMORY
 
 * (Optional, but recommended) You can pass a simple script (see
-  [`extras/`](extras/)) to [`--cluster-status`][cluster-status] to handle the
-  job statuses TIMEOUT and CANCELED
+  [`extras/`](extras/)) to [`--cluster-status`][cluster-status] to additionally
+  handle the job statuses TIMEOUT and CANCELED
 
 ## Limitations
 
