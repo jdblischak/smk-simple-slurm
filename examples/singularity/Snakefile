@@ -7,7 +7,7 @@ rule singularity_tmp_default:
     output:
         "output/default.txt",
     container:
-        "docker://rocker/r-ver",
+        "docker://ghcr.io/crerecombinase/smk-simple-slurm:main",
     shell:
         """
         $tmpf = $(mktemp)
