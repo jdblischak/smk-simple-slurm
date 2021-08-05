@@ -7,12 +7,12 @@ rule singularity_tmp_default:
     output:
         "output/default.txt",
     container:
-        "docker://rocker/r-edge:4.1.0",
+        "docker://rocker/r-edge:gcc-11",
     shell:
         """
-        $tmpf = $(mktemp)
+        tmpf=$(mktemp)
         echo This rule created the file $tmpf in $TMPDIR > {output}
-        shuf -i 100 > $tmpf
+        shuf -i 1-100 > $tmpf
         cat $tmpf >> {output}
         R -e 'sessionInfo()' >> {output}
         """
