@@ -4,13 +4,7 @@ The example has a single rule, which is run in a singularity container.  To run 
 
 ## Running the example
 ```sh
-# set username and password for whatever service you  GitHub PAT
-export SINGULARITY_DOCKER_USERNAME=
-export SINGULARITY_DOCKER_PASSWORD=Put_Your_GitHub_PAT_Here
 snakemake --profile simple/ 
-
-# Confirm the correct time was requested
-cat output/*
 ```
 
 ## A note on containers
