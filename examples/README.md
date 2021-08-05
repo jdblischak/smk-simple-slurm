@@ -12,6 +12,8 @@ them on your cluster to confirm the expected behavior.
 * `out-of-memory` - Triggers an out-of-memory error. Snakemake can handle this
   by default
 
+* `singularity` - Run a rule inside a singularity container
+
 * `threads` - Increase the `threads` for a rule. It is responsive to `--jobs`.
   In other words, it will scale down the number of threads used if there aren't
   enough available (thus make sure to pass `{threads}` to the software you are
