@@ -286,7 +286,7 @@ documentation below.
 
 This is all boiler plate code. Please feel free to use it for whatever purpose
 you like. No need to attribute or cite this repo, but of course it comes with no
-warranties. To make it official, its released under the [CC0][] license. See
+warranties. To make it official, it's released under the [CC0][] license. See
 [`LICENSE`](LICENSE) for details.
 
 [CC0]: https://creativecommons.org/publicdomain/zero/1.0/
