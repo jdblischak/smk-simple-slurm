@@ -6,6 +6,7 @@
 * [Limitations](#limitations)
 * [Quick start](#quick-start)
 * [Customizations](#customizations)
+* [Use speed with caution](#use-speed-with-caution)
 * [License](#license)
 
 The option [`--cluster-config`][cluster-config] is deprecated, but it's still
@@ -32,7 +33,8 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
 
 * Fast! It can quickly submit jobs and check their status because it doesn't
   invoke a Python script for these steps, which adds up when you have thousands
-  of jobs
+  of jobs (however, please see the section [Use speed with
+  caution](#use-speed-with-caution))
 
 * No reliance on the deprecated option `--cluster-config` to customize job
   resources
@@ -281,6 +283,26 @@ documentation below.
    Please see [`examples/multi-cluster/`](examples/multi-cluster) to try out my
    latest attempt. Also, please upvote my [PR][pr-multi-cluster] to fix this in
    Snakemake.
+
+## Use speed with caution
+
+A big benefit of the simplicity of this profile is the speed in which jobs can
+be submitted and their statuses checked. The [official Slurm profile for
+Snakemake][slurm-official] provides a lot of extra fine-grained control, but
+this is all defined in Python scripts, which then have to be invoked for each
+job submission and status check. I needed this speed for a pipeline that had an
+aggregation rule that needed to be run tens of thousands of times, and the run
+time for each job was under 10 seconds. In this situation, the job submission
+rate and status check rate were huge bottlenecks.
+
+However, you should use this speed with caution! On a shared HPC cluster, many
+users are making requests to the Slurm scheduler. If too many requests are made
+at once, the performance will suffer for all users. If the rules in your
+Snakemake pipeline take at least more than a few minutes to complete, then it's
+overkill to constantly check the status of multiple jobs in a single second. In
+other words, only increase `max-jobs-per-second` and/or
+`max-status-checks-per-second` if either the submission rate or status checks to
+confirm job completion are clear bottlenecks.
 
 ## License
 

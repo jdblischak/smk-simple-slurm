@@ -12,8 +12,8 @@ default-resources:
   - qos=<name-of-quality-of-service>
   - mem_mb=1000
 restart-times: 3
-max-jobs-per-second: 100
-max-status-checks-per-second: 10
+max-jobs-per-second: 10
+max-status-checks-per-second: 1
 local-cores: 1
 latency-wait: 60
 jobs: 500
