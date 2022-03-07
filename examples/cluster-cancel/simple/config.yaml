@@ -1,0 +1,10 @@
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+    --parsable # Required to pass job IDs to scancel
+jobs: 100
+printshellcmds: True
+cluster-cancel: scancel
+cluster-cancel-nargs: 50

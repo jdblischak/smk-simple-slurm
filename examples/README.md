@@ -3,6 +3,9 @@
 Each directory contains an example usage of the simple slurm profile. You can run
 them on your cluster to confirm the expected behavior.
 
+* `cluster-cancel` - Cancel all submitted jobs with `scancel` when the main
+  Snakemake process is cancelled (requires Snakemake 7.0.0+)
+
 * `dynamic-resources` - Increase memory for a rule on restart after each failed
   attempt
 
