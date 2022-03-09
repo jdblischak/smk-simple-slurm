@@ -23,3 +23,6 @@ Scripts:
 
 * `status-scontrol.sh` - Bash script that uses `scontrol` to determine job
   status
+
+* `status-sacct-multi.sh` - Bash script that uses `sacct` to determine job
+  status in a multi-cluster setup

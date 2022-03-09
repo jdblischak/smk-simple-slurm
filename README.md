@@ -50,7 +50,7 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
 
 * **New** Full support for [multi-cluster setups][multi_cluster] (using a custom
   status script requires Snakemake 7.1.1+). See the section [Multiple
-  clusters][#multiple-clusters] below
+  clusters](#multiple-clusters) below
 
 ## Limitations
 
@@ -221,6 +221,9 @@ status of the jobs. You can choose which one you'd like to use:
   [`slurm-status.py`](https://github.com/Snakemake-Profiles/slurm/blob/master/%7B%7Bcookiecutter.profile_name%7D%7D/slurm-status.py#L35)
   from the [official profile][slurm-official]. If your HPC cluster doesn't have
   `sacct` configured, you can use this option
+
+* `status-sacct-multi.sh` - Support for multi-cluster setup (see section
+  [Multiple clusters](#multiple-clusters))
 
 To use one of these status scripts:
 

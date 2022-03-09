@@ -32,3 +32,6 @@ snakemake --profile simple/
 # Confirm the correct cluster was used
 cat output/cluster.txt
 ```
+
+**Note:** The file `simple/status-sacct-multi.sh` is a symlink to the actual
+file in `extras/`
