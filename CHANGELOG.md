@@ -1,5 +1,8 @@
 ## dev
 
+Full support for custom status scripts in a multi-cluster setup (requires
+minimum of Snakemake version 7.1.1)
+
 Example with [cluster-cancel][] (requires minimum of Snakemake version 7.0.0)
 
 [cluster-cancel]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-cancel

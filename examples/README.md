@@ -12,6 +12,9 @@ them on your cluster to confirm the expected behavior.
 * `jobs-per-second` - Measures how many jobs Snakemake can submit to Slurm per
   second
 
+* `multi-cluster` - Submit jobs to more than one cluster (requires Snakemake
+  7.1.1+)
+
 * `out-of-memory` - Triggers an out-of-memory error. Snakemake can handle this
   by default
 

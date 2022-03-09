@@ -46,14 +46,16 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
   [`extras/`](extras/)) to [`--cluster-status`][cluster-status] to additionally
   handle the job statuses TIMEOUT and CANCELED
 
+* **New** Support for cluster-cancel
+
+* **New** Full support for [multi-cluster setups][multi_cluster] (using a custom
+  status script requires Snakemake 7.1.1+). See the section [Multiple
+  clusters][#multiple-clusters] below
+
 ## Limitations
 
 * Can't use [group jobs][grouping], but they [aren't easy to use in the first
   place][grouping-issue]
-
-* Limited support for [multi-cluster setups][multi_cluster] (please upvote my
-  [PR][pr-multi-cluster] to enable support for using custom scripts with
-  `--cluster-status` in a multi-cluster setup)
 
 * Wildcards can't contain `/` if you want to use them in the name of the Slurm
   log file. This is a Slurm requirement (which makes sense, since it has to
@@ -271,18 +273,15 @@ documentation below.
     ```python
     # Snakefile
     rule different_cluster:
-      resources:
-        clusters = "c2"
+        resources:
+            clusters="c2"
     ```
 
-1. It's currently not possible to use a custom cluster status script with
-   multi-cluster. After you add the flag `--parsable` to `sbatch`, it will
+1. Using a custom cluster status script in a multi-cluster setup requires
+   Snakemake 7.1.1+. After you add the flag `--parsable` to `sbatch`, it will
    return `jobid;cluster_name`. I adapted `status-sacct.sh` to handle this
-   situation. However, Snakemake doesn't quote the argument, so the semi-colon
-   causes it to try and execute a program that is the name of the cluster.
-   Please see [`examples/multi-cluster/`](examples/multi-cluster) to try out my
-   latest attempt. Also, please upvote my [PR][pr-multi-cluster] to fix this in
-   Snakemake.
+   situation. Please see [`examples/multi-cluster/`](examples/multi-cluster) to
+   try out `status-sacct-multi.sh`
 
 ## Use speed with caution
 
@@ -321,6 +320,5 @@ warranties. To make it official, it's released under the [CC0][] license. See
 [min_version]: https://snakemake.readthedocs.io/en/stable/snakefiles/writing_snakefiles.html#depend-on-a-minimum-snakemake-version
 [multi_cluster]: https://slurm.schedmd.com/multi_cluster.html
 [no-cluster-status]: http://bluegenes.github.io/Using-Snakemake_Profiles/
-[pr-multi-cluster]: https://github.com/snakemake/snakemake/pull/977
 [sichong-post]: https://www.sichong.site/2020/02/25/snakemake-and-slurm-how-to-manage-workflow-with-resource-constraint-on-hpc/
 [slurm-official]: https://github.com/Snakemake-Profiles/slurm

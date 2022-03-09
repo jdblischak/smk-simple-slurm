@@ -1,6 +1,13 @@
+import snakemake.utils
+
+snakemake.utils.min_version("7.1.1")
+
+
 rule cluster_name:
     output:
         "output/cluster.txt",
+    resources:
+        clusters="slurm_cluster",
     shell:
         """
         sleep 5s
