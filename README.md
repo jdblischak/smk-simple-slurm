@@ -46,7 +46,8 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
   [`extras/`](extras/)) to [`--cluster-status`][cluster-status] to additionally
   handle the job statuses TIMEOUT and CANCELED
 
-* **New** Support for cluster-cancel
+* **New** Support for [cluster-cancel][] feature introduced in Snakemake 7.0.0
+  (see [`examples/cluster-cancel/`](examples/cluster-cancel/))
 
 * **New** Full support for [multi-cluster setups][multi_cluster] (using a custom
   status script requires Snakemake 7.1.1+). See the section [Multiple
@@ -315,6 +316,7 @@ warranties. To make it official, it's released under the [CC0][] license. See
 
 [CC0]: https://creativecommons.org/publicdomain/zero/1.0/
 [changelog]: https://snakemake.readthedocs.io/en/stable/project_info/history.html
+[cluster-cancel]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-cancel
 [cluster-config]: https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html#cluster-configuration-deprecated
 [cluster-execution]: https://snakemake.readthedocs.io/en/stable/executing/cluster.html
 [cluster-status]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-status

@@ -1,4 +1,4 @@
-## dev
+## v1.2.0 - 2022-03-09
 
 Full support for custom status scripts in a multi-cluster setup (requires
 minimum of Snakemake version 7.1.1)
