@@ -1,0 +1,29 @@
+n = 150000
+
+
+localrules:
+    many,
+
+
+outdir = "output/subdir-that-makes-the-path-very-very-very-very-very-very-very-long"
+
+
+rule all:
+    input:
+        f"{outdir}/combine.txt",
+
+
+rule combine:
+    input:
+        expand(f"{outdir}/{{rep}}.txt", rep=range(1, n + 1)),
+    output:
+        f"{outdir}/combine.txt",
+    shell:
+        "touch {output}"
+
+
+rule many:
+    output:
+        f"{outdir}/{{file}}",
+    shell:
+        "touch {output}"

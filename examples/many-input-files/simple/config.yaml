@@ -1,0 +1,13 @@
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --mem={resources.mem_mb}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+default-resources:
+  - mem_mb=4000
+jobs: 500
+printshellcmds: True
+rerun-incomplete: True
+scheduler: greedy
+jobscript: "jobscript-wo-properties.sh"

@@ -1,3 +1,7 @@
+## dev
+
+Example rule with thousands of input files (`many-input-files`)
+
 ## v1.2.0 - 2022-03-09
 
 Full support for custom status scripts in a multi-cluster setup (requires

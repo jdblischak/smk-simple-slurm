@@ -12,6 +12,9 @@ them on your cluster to confirm the expected behavior.
 * `jobs-per-second` - Measures how many jobs Snakemake can submit to Slurm per
   second
 
+* `many-input-files` - Use a custom jobscript when a rule has many thousands of
+  input files
+
 * `multi-cluster` - Submit jobs to more than one cluster (requires Snakemake
   7.1.1+)
 
