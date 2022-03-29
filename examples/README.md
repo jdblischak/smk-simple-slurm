@@ -12,6 +12,8 @@ them on your cluster to confirm the expected behavior.
 * `jobs-per-second` - Measures how many jobs Snakemake can submit to Slurm per
   second
 
+* `log-file-date` - Insert the current date into the log file path
+
 * `many-input-files` - Use a custom jobscript when a rule has many thousands of
   input files
 

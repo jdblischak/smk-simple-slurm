@@ -1,5 +1,7 @@
 ## dev
 
+Example that inserts the current date in the log file paths (`log-file-date`)
+
 Example rule with thousands of input files (`many-input-files`)
 
 ## v1.2.0 - 2022-03-09

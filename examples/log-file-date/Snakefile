@@ -1,0 +1,22 @@
+samples = ["A", "B"]
+
+
+rule all:
+    input:
+        expand("output/two/{sample}.txt", sample=samples),
+
+
+rule one:
+    output:
+        "output/one/{sample}.txt",
+    shell:
+        "touch {output}"
+
+
+rule two:
+    input:
+        "output/one/{sample}.txt",
+    output:
+        "output/two/{sample}.txt",
+    shell:
+        "touch {output}"
