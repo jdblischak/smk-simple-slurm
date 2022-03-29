@@ -9,7 +9,7 @@ them on your cluster to confirm the expected behavior.
 * `dynamic-resources` - Increase memory for a rule on restart after each failed
   attempt
 
-* `jobs-per-second` - Measures how many jobs Snakemake can submit to Slurm per
+* `jobs-per-second` - Measure how many jobs Snakemake can submit to Slurm per
   second
 
 * `log-file-date` - Insert the current date into the log file path
@@ -20,8 +20,8 @@ them on your cluster to confirm the expected behavior.
 * `multi-cluster` - Submit jobs to more than one cluster (requires Snakemake
   7.1.1+)
 
-* `out-of-memory` - Triggers an out-of-memory error. Snakemake can handle this
-  by default
+* `out-of-memory` - Trigger an out-of-memory error. Snakemake can handle this by
+  default
 
 * `singularity` - Run a rule inside a singularity container
 
@@ -36,6 +36,6 @@ them on your cluster to confirm the expected behavior.
 
 * `time-string` - Specify the time as `"days-hours:minutes:seconds"`
 
-* `timeout` - Triggers a timeout error. Snakemake requires the assistance of a
+* `timeout` - Trigger a timeout error. Snakemake requires the assistance of a
   custom script to `--cluster-status` to handle this error. Otherwise it just
   stalls indefinitely

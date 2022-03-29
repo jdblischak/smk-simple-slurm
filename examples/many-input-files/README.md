@@ -21,7 +21,8 @@ $ cat $CONDA_PREFIX/lib/python3.9/site-packages/snakemake/executors/jobscript.sh
 You can avoid this by creating a custom jobscript file that omits the comment
 with the job properties.
 
-**Note:** This example was inspired by this [Issue](https://github.com/Snakemake-Profiles/slurm/issues/87)
+**Note:** This example was inspired by this
+[Issue](https://github.com/Snakemake-Profiles/slurm/issues/87)
 
 The example Snakefile creates 150k files, which are then the input to a single
 rule named "combine". The error is avoided by using the custom jobscript
