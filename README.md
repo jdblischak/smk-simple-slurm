@@ -61,7 +61,8 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
 * Wildcards can't contain `/` if you want to use them in the name of the Slurm
   log file. This is a Slurm requirement (which makes sense, since it has to
   create a file on the filesystem). You'll either have to change how you manage
-  the wildcards or remove the wildcards from the pattern passed to `--output`.
+  the wildcards or remove the `{wildcards}` from the pattern passed to `--output`,
+  e.g. `--output=logs/{rule}/{rule}-%j.out`.
   Note that you can still submit wildcards containing `/` to `--job-name`
 
 * Requires Snakemake version 5.15.0 or later (released 2020-04-21, see
