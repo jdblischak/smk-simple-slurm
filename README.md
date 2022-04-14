@@ -326,5 +326,5 @@ warranties. To make it official, it's released under the [CC0][] license. See
 [min_version]: https://snakemake.readthedocs.io/en/stable/snakefiles/writing_snakefiles.html#depend-on-a-minimum-snakemake-version
 [multi_cluster]: https://slurm.schedmd.com/multi_cluster.html
 [no-cluster-status]: http://bluegenes.github.io/Using-Snakemake_Profiles/
-[sichong-post]: https://www.sichong.site/2020/02/25/snakemake-and-slurm-how-to-manage-workflow-with-resource-constraint-on-hpc/
+[sichong-post]: https://www.sichong.site/workflow/2021/11/08/how-to-manage-workflow-with-resource-constraint.html
 [slurm-official]: https://github.com/Snakemake-Profiles/slurm
