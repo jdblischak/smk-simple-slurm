@@ -212,16 +212,19 @@ monitor the job status with the option [`--cluster-status`][cluster-status].
 The directory [`extras/`](extras/) contains multiple options for checking the
 status of the jobs. You can choose which one you'd like to use:
 
-* `status-sacct.py` - This is the example from the Snakemake documentation
+* `status-sacct.py` - This is the example from the [Snakemake
+  documentation][cluster-status]. It uses `sacct` to query the status of each
+  job by its ID
 
 * `status-sacct.sh` - (recommended) This is a Bash translation of the example
-  from the Snakemake documentation. The Python script is simply shell-ing out to
-  `sacct`, so running Bash directly removes the overhead of repeatedly starting
-  Python each time you check a job
+  from the [Snakemake documentation][cluster-status]. The Python script is
+  simply shell-ing out to `sacct`, so running Bash directly removes the overhead
+  of repeatedly starting Python each time you check a job
 
-* `status-scontrol.sh` - This is a Bash translation of
+* `status-scontrol.sh` - This is a Bash script that uses `scontrol` to query the
+  status of each job by its ID. The `scontrol` command is from
   [`slurm-status.py`](https://github.com/Snakemake-Profiles/slurm/blob/master/%7B%7Bcookiecutter.profile_name%7D%7D/slurm-status.py#L35)
-  from the [official profile][slurm-official]. If your HPC cluster doesn't have
+  in the [official profile][slurm-official]. If your HPC cluster doesn't have
   `sacct` configured, you can use this option
 
 * `status-sacct-multi.sh` - Support for multi-cluster setup (see section

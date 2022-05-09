@@ -11,8 +11,8 @@ call to `sbatch` in the field `cluster` in `config.yml`
 
 Sources:
 
-* [Snakemake documentation for `--cluster-status`](https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-status)
-* [`slurm-status.py` from official Slurm profile](https://github.com/Snakemake-Profiles/slurm/blob/master/%7B%7Bcookiecutter.profile_name%7D%7D/slurm-status.py)
+* [Snakemake documentation for `--cluster-status`][cluster-status]
+* [`slurm-status.py` from official Slurm profile][slurm-status.py]
 
 Scripts:
 
@@ -26,3 +26,14 @@ Scripts:
 
 * `status-sacct-multi.sh` - Bash script that uses `sacct` to determine job
   status in a multi-cluster setup
+
+I prefer to keep scripts as simple as possible. However, if none of the above
+simple scripts are sufficient for your use case, I recommend you try one of the
+following available status scripts:
+
+* [LUMC/slurm-cluster-status](https://github.com/LUMC/slurm-cluster-status)
+
+* [`slurm-status.py`][slurm-status.py] from the official profile
+
+[cluster-status]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-status
+[slurm-status.py]: https://github.com/Snakemake-Profiles/slurm/blob/master/%7B%7Bcookiecutter.profile_name%7D%7D/slurm-status.py
