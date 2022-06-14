@@ -1,0 +1,7 @@
+name: py3r4
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3
+  - r-base=4

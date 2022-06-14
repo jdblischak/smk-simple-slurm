@@ -1,0 +1,7 @@
+name: py2r3
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=2
+  - r-base=3

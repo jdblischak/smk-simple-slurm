@@ -1,0 +1,8 @@
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+jobs: 10
+printshellcmds: True
+use-conda: True

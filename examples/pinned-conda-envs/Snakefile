@@ -1,0 +1,21 @@
+import snakemake.utils
+
+snakemake.utils.min_version("7.8.0")
+
+
+rule all:
+    input:
+        expand("output/{env}/{tool}.txt", env=["py2r3", "py3r4"], tool=["python", "r"]),
+
+
+rule pinned:
+    conda:
+        "envs/{env}.yaml"
+    output:
+        py="output/{env}/{tool}.txt",
+    params:
+        executable=lambda wildcards: "Rscript" if wildcards.tool == "r" else "python",
+    shell:
+        """
+        {params.executable} --version 2&> {output}
+        """

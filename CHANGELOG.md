@@ -1,5 +1,8 @@
 ## dev
 
+Example that uses pinned conda environments (`pinned-conda-envs`) (requires
+minimum of Snakemake version 7.8.0)
+
 Example that inserts the current date in the log file paths (`log-file-date`)
 
 Example rule with thousands of input files (`many-input-files`)
