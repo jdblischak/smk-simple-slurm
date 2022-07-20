@@ -1,5 +1,9 @@
 ## dev
 
+Link to [Christian's profile for AWS ParallelCluster][snakemake-aws-parallelcluster-slurm]
+
+[snakemake-aws-parallelcluster-slurm]: https://github.com/cbrueffer/snakemake-aws-parallelcluster-slurm
+
 Example that uses pinned conda environments (`pinned-conda-envs`) (requires
 minimum of Snakemake version 7.8.0)
 

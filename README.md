@@ -53,6 +53,10 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
   status script requires Snakemake 7.1.1+). See the section [Multiple
   clusters](#multiple-clusters) below
 
+* **New** Adaptable for use with [AWS ParallelCluster][aws-parallelcluster]. See
+  [Christian Brueffer's][cbrueffer] profile
+  [snakemake-aws-parallelcluster-slurm][]
+
 ## Limitations
 
 * Can't use [group jobs][grouping], but they [aren't easy to use in the first
@@ -318,6 +322,8 @@ you like. No need to attribute or cite this repo, but of course it comes with no
 warranties. To make it official, it's released under the [CC0][] license. See
 [`LICENSE`](LICENSE) for details.
 
+[aws-parallelcluster]: https://aws.amazon.com/hpc/parallelcluster/
+[cbrueffer]: https://github.com/cbrueffer
 [CC0]: https://creativecommons.org/publicdomain/zero/1.0/
 [changelog]: https://snakemake.readthedocs.io/en/stable/project_info/history.html
 [cluster-cancel]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-cancel
@@ -331,3 +337,4 @@ warranties. To make it official, it's released under the [CC0][] license. See
 [no-cluster-status]: http://bluegenes.github.io/Using-Snakemake_Profiles/
 [sichong-post]: https://www.sichong.site/workflow/2021/11/08/how-to-manage-workflow-with-resource-constraint.html
 [slurm-official]: https://github.com/Snakemake-Profiles/slurm
+[snakemake-aws-parallelcluster-slurm]: https://github.com/cbrueffer/snakemake-aws-parallelcluster-slurm
