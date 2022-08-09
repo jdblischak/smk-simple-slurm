@@ -27,6 +27,9 @@ Scripts:
 * `status-sacct-multi.sh` - Bash script that uses `sacct` to determine job
   status in a multi-cluster setup
 
+* `status-sacct-robust.sh` - Bash script that re-runs `sacct` multiple times if
+  it fails to return a valid status
+
 I prefer to keep scripts as simple as possible. However, if none of the above
 simple scripts are sufficient for your use case, I recommend you try one of the
 following available status scripts:
