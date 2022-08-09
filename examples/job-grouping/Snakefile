@@ -1,0 +1,17 @@
+n = 1000
+
+
+rule all:
+    input:
+        expand("output/{rep}.txt", rep=range(1, n + 1)),
+
+
+rule exampleRule:
+    output:
+        "output/{file}",
+    resources:
+        mem_mb=100,
+    shell:
+        """
+        touch {output}
+        """

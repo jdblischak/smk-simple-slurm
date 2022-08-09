@@ -59,8 +59,13 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
 
 ## Limitations
 
-* Can't use [group jobs][grouping], but they [aren't easy to use in the first
-  place][grouping-issue]
+* If you use [job grouping][grouping], then you can't dynamically name the jobs
+  and log files based on the name of the rules. This doesn't prevent you from
+  using this profile and benefiting from its other features, but it is less
+  convenient. Also note that [job grouping isn't easy to use in the first
+  place][grouping-issue], since it sums resources like `mem_mb` and `threads`,
+  but that is a limitation of Snakemake itself, and not anything in particular
+  with this profile
 
 * Wildcards can't contain `/` if you want to use them in the name of the Slurm
   log file. This is a Slurm requirement (which makes sense, since it has to

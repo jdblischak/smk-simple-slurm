@@ -1,0 +1,11 @@
+cluster:
+  mkdir -p logs/ &&
+  sbatch
+    --mem={resources.mem_mb}
+    --output=logs/%j.out
+default-resources:
+  - mem_mb=1000
+jobs: 50
+keep-going: True
+rerun-incomplete: True
+printshellcmds: True

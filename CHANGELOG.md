@@ -1,5 +1,9 @@
 ## dev
 
+Example with [job grouping][grouping]
+
+[grouping]: https://snakemake.readthedocs.io/en/stable/executing/grouping.html
+
 Link to [Christian's profile for AWS ParallelCluster][snakemake-aws-parallelcluster-slurm]
 
 [snakemake-aws-parallelcluster-slurm]: https://github.com/cbrueffer/snakemake-aws-parallelcluster-slurm
