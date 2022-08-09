@@ -6,7 +6,7 @@
 New status script `status-sacct-robust.sh` that re-runs `sacct` multiple times
 if it fails to return a valid status. This is more robust and is recommended if
 you notice Snakemake unexpectedly re-submits jobs that are still pending or
-running. See [Issue #9] for discussion
+running. See [Issue #9][issue-9] for discussion
 
 [issue-9]: https://github.com/jdblischak/smk-simple-slurm/issues/9
 
