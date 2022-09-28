@@ -26,6 +26,15 @@ variable `attempt`][attempt].
 **Note:** This example was inspired by [Issue
 #11](https://github.com/jdblischak/smk-simple-slurm/issues/11)
 
+However, there is a downside to specifying the memory to Slurm in GB. The
+resource `mem_mb` is one of Snakemake's [standard
+resources][standard-resources]. This means that you will always see `mem_mb`
+defined when your jobs are submitted to the cluster. This has no effect since
+you are passing `mem_gb` to `sbatch`, but of course it is distracting and
+confusing.
+
+[standard-resources]: https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#standard-resources
+
 The example `Snakefile` submits 3 jobs: `default_mem` uses the default memory
 defined in `default-resources`, `rule_specific_mem` specifies a custom memory
 for that rule only, and `dynamic_resources` requests more memory at each
@@ -35,6 +44,6 @@ subsequent attempt (it will always fail).
 # Sumbit the jobs
 snakemake --profile simple/
 
-# In a separate shell, confirm jobs request memory in GB
-squeue -u $USER
+# Confirm the correct number of GB was allocated by Slurm
+grep -R "^Requested memory" logs/
 ```

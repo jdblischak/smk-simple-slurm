@@ -9,7 +9,13 @@ rule default_mem:
     output:
         "output/default-memory.txt",
     shell:
-        "sleep 15s; touch {output}"
+        """
+        sleep 10s
+        sacct --units G --format JobName,State,Elapsed,REQMEM,MaxRSS -j $SLURM_JOB_ID
+        mem=`sacct --units G --format REQMEM -j $SLURM_JOB_ID | tail -n 1`
+        echo "Requested memory: $mem"
+        echo "$mem" > {output}
+        """
 
 
 rule rule_specific_mem:
@@ -18,7 +24,13 @@ rule rule_specific_mem:
     resources:
         mem_gb=8,
     shell:
-        "sleep 15s; touch {output}"
+        """
+        sleep 10s
+        sacct --units G --format JobName,State,Elapsed,REQMEM,MaxRSS -j $SLURM_JOB_ID
+        mem=`sacct --units G --format REQMEM -j $SLURM_JOB_ID | tail -n 1`
+        echo "Requested memory: $mem"
+        echo "$mem" > {output}
+        """
 
 
 rule dynamic_resources:
@@ -27,4 +39,10 @@ rule dynamic_resources:
     resources:
         mem_gb=lambda _, attempt: 1 + ((attempt - 1) * 2),
     shell:
-        "sleep 5s; exit 1"
+        """
+        sleep 1s
+        sacct --units G --format JobName,State,Elapsed,REQMEM,MaxRSS -j $SLURM_JOB_ID
+        mem=`sacct --units G --format REQMEM -j $SLURM_JOB_ID | tail -n 1`
+        echo "Requested memory: $mem"
+        exit 1
+        """
