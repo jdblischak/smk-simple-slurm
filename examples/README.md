@@ -19,6 +19,8 @@ them on your cluster to confirm the expected behavior.
 * `many-input-files` - Use a custom jobscript when a rule has many thousands of
   input files
 
+* `mem-gb` - Specify memory in GB
+
 * `multi-cluster` - Submit jobs to more than one cluster (requires Snakemake
   7.1.1+)
 

@@ -1,5 +1,6 @@
 ## dev
 
+Example that specifies memory in GB instead of MB (`mem-gb`)
 
 ## v1.3.0 - 2022-08-09
 

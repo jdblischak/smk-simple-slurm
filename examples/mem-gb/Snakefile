@@ -1,0 +1,30 @@
+rule all:
+    input:
+        "output/default-memory.txt",
+        "output/rule-specific-memory.txt",
+        "output/dynamic-resources.txt",
+
+
+rule default_mem:
+    output:
+        "output/default-memory.txt",
+    shell:
+        "sleep 15s; touch {output}"
+
+
+rule rule_specific_mem:
+    output:
+        "output/rule-specific-memory.txt",
+    resources:
+        mem_gb=8,
+    shell:
+        "sleep 15s; touch {output}"
+
+
+rule dynamic_resources:
+    output:
+        "output/dynamic-resources.txt",
+    resources:
+        mem_gb=lambda _, attempt: 1 + ((attempt - 1) * 2),
+    shell:
+        "sleep 5s; exit 1"
