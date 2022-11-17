@@ -3,15 +3,42 @@ n = 1000
 
 rule all:
     input:
-        expand("output/{rep}.txt", rep=range(1, n + 1)),
+        expand(
+            "output/{type}/{rep}.txt",
+            type=["grouped", "separate"],
+            rep=range(1, n + 1),
+        ),
+        "output/threads.txt",
 
 
-rule exampleRule:
+rule exampleRuleToGroup:
     output:
-        "output/{file}",
+        "output/grouped/{file}",
     resources:
         mem_mb=100,
     shell:
         """
         touch {output}
+        """
+
+
+rule exampleRuleSeparate:
+    output:
+        "output/separate/{file}",
+    resources:
+        mem_mb=100,
+    shell:
+        """
+        touch {output}
+        """
+
+
+rule multiThreadedRule:
+    output:
+        "output/threads.txt",
+    threads: 14
+    shell:
+        """
+        sleep 10s
+        echo {threads} > {output}
         """

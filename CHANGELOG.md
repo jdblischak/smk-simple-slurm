@@ -7,6 +7,12 @@ Snakefile in the path to the logs (`shared-logs`) ([Issue #12][issue-12])
 
 [issue-12]: https://github.com/jdblischak/smk-simple-slurm/issues/12
 
+Update [job grouping][grouping] example to better allocate resources (requires
+minimum of Snakemake version 7.11.0) ([Snakemake Issue
+#872][snakemake-issue-872])
+
+[snakemake-issue-872]: https://github.com/snakemake/snakemake/issues/872
+
 ## v1.3.0 - 2022-08-09
 
 New status script `status-sacct-robust.sh` that re-runs `sacct` multiple times
