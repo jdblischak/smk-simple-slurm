@@ -21,7 +21,11 @@ node with hundreds of cores (which even if possible on your HPC cluster, would
 make it take way longer than necessary for your job to be scheduled). To avoid
 this, set `--cores` to the maximum number of threads used by any of the
 non-grouped rules. This way the grouped jobs will at most use that many cores
-(as well as a maximum `mem_mb` of (`mem_mb` per rule times `--cores`)).
+(as well as a maximum `mem_mb` of (`mem_mb` per rule times `--cores`)). For more
+details, please see the official Snakemake documentation on [Resources and Group
+Jobs][resources-and-group-jobs].
+
+[resources-and-group-jobs]: https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources-and-group-jobs
 
 The example Snakefile submits 3 very different types of rules:
 
