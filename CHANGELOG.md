@@ -2,6 +2,11 @@
 
 Example that specifies memory in GB instead of MB (`mem-gb`)
 
+Example that shares a profile between pipelines, and includes the name of the
+Snakefile in the path to the logs (`shared-logs`) ([Issue #12][issue-12])
+
+[issue-12]: https://github.com/jdblischak/smk-simple-slurm/issues/12
+
 ## v1.3.0 - 2022-08-09
 
 New status script `status-sacct-robust.sh` that re-runs `sacct` multiple times

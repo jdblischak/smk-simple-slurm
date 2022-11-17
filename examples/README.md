@@ -29,6 +29,9 @@ them on your cluster to confirm the expected behavior.
 
 * `singularity` - Run a rule inside a singularity container
 
+* `shared-logs` - Share the same profile `config.yaml` between multiple
+  pipelines, but include the name of the Snakefile in the path to the log files
+
 * `threads` - Increase the `threads` for a rule. It is responsive to `--jobs`.
   In other words, it will scale down the number of threads used if there aren't
   enough available (thus make sure to pass `{threads}` to the software you are
