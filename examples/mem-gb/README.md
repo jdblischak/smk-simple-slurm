@@ -46,4 +46,5 @@ snakemake --profile simple/
 
 # Confirm the correct number of GB was allocated by Slurm
 grep -R "^Requested memory" logs/
+grep -R "^Provided memory" logs/
 ```

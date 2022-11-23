@@ -14,7 +14,8 @@ rule default_mem:
         sacct --units G --format JobName,State,Elapsed,REQMEM,MaxRSS -j $SLURM_JOB_ID
         mem=`sacct --units G --format REQMEM -j $SLURM_JOB_ID | tail -n 1`
         echo "Requested memory: $mem"
-        echo "$mem" > {output}
+        echo "Provided memory: $SLURM_MEM_PER_NODE MB"
+        echo "$SLURM_MEM_PER_NODE" > {output}
         """
 
 
@@ -29,7 +30,8 @@ rule rule_specific_mem:
         sacct --units G --format JobName,State,Elapsed,REQMEM,MaxRSS -j $SLURM_JOB_ID
         mem=`sacct --units G --format REQMEM -j $SLURM_JOB_ID | tail -n 1`
         echo "Requested memory: $mem"
-        echo "$mem" > {output}
+        echo "Provided memory: $SLURM_MEM_PER_NODE MB"
+        echo "$SLURM_MEM_PER_NODE" > {output}
         """
 
 
@@ -44,5 +46,6 @@ rule dynamic_resources:
         sacct --units G --format JobName,State,Elapsed,REQMEM,MaxRSS -j $SLURM_JOB_ID
         mem=`sacct --units G --format REQMEM -j $SLURM_JOB_ID | tail -n 1`
         echo "Requested memory: $mem"
+        echo "Provided memory: $SLURM_MEM_PER_NODE MB"
         exit 1
         """
