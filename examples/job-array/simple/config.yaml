@@ -1,0 +1,16 @@
+cluster:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --mem={resources.mem_mb}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+default-resources:
+  - mem_mb=100
+jobs: 1000
+keep-going: True
+rerun-incomplete: True
+scheduler: greedy
+# It doesn't get close to these max limits. It is effectively letting them be
+# unconstrained.
+max-jobs-per-second: 1000
+max-status-checks-per-second: 1000

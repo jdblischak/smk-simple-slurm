@@ -1,0 +1,15 @@
+n = 20000
+
+
+rule all:
+    input:
+        expand("output/bam/sample{rep}.bam", rep=range(1, n + 1)),
+
+
+rule process:
+    input:
+        "output/fastq/sample{rep}.fastq",
+    output:
+        "output/bam/sample{rep}.bam",
+    shell:
+        "touch {output}"

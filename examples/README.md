@@ -9,6 +9,9 @@ them on your cluster to confirm the expected behavior.
 * `dynamic-resources` - Increase memory for a rule on restart after each failed
   attempt
 
+* `job-array` - Use a Slurm job array to quickly execute a rule that must be run
+  thousands of times
+
 * `job-grouping` - Adapt profile to allow job grouping
 
 * `jobs-per-second` - Measure how many jobs Snakemake can submit to Slurm per

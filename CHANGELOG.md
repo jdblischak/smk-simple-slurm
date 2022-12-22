@@ -13,6 +13,8 @@ minimum of Snakemake version 7.11.0) ([Snakemake Issue
 
 [snakemake-issue-872]: https://github.com/snakemake/snakemake/issues/872
 
+Example that uses a job array to submit many jobs at once (`job-array`)
+
 ## v1.3.0 - 2022-08-09
 
 New status script `status-sacct-robust.sh` that re-runs `sacct` multiple times
