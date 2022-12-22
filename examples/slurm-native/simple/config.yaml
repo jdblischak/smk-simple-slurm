@@ -1,0 +1,10 @@
+slurm: True
+default-resources:
+  - mem_mb=100
+#  - slurm_account=
+max-jobs-per-second: 10
+max-status-checks-per-second: 1
+jobs: 500
+keep-going: True
+rerun-incomplete: True
+printshellcmds: True

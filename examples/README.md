@@ -35,6 +35,9 @@ them on your cluster to confirm the expected behavior.
 * `shared-logs` - Share the same profile `config.yaml` between multiple
   pipelines, but include the name of the Snakefile in the path to the log files
 
+* `slurm-native` - Use Snakemake's native Slurm support (`--slurm`, requires
+  Snakemake 7.19.0+)
+
 * `threads` - Increase the `threads` for a rule. It is responsive to `--jobs`.
   In other words, it will scale down the number of threads used if there aren't
   enough available (thus make sure to pass `{threads}` to the software you are
