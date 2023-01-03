@@ -65,7 +65,12 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
   convenient. Also note that [job grouping isn't easy to use in the first
   place][grouping-issue], since it sums resources like `mem_mb` and `threads`,
   but that is a limitation of Snakemake itself, and not anything in particular
-  with this profile
+  with this profile **UPDATE:** As of Snakemake 7.11, there is improved support
+  for [managing the maximum resources requested when submitting a grouped
+  job][resources-and-group-jobs] that executes multiple rules. It's still
+  non-trivial, but now at least possible. See the example in
+  [`examples/job-grouping/`](examples/job-grouping/) for a demonstration of how
+  to use the new features
 
 * Wildcards can't contain `/` if you want to use them in the name of the Slurm
   log file. This is a Slurm requirement (which makes sense, since it has to
@@ -340,6 +345,7 @@ warranties. To make it official, it's released under the [CC0][] license. See
 [min_version]: https://snakemake.readthedocs.io/en/stable/snakefiles/writing_snakefiles.html#depend-on-a-minimum-snakemake-version
 [multi_cluster]: https://slurm.schedmd.com/multi_cluster.html
 [no-cluster-status]: http://bluegenes.github.io/Using-Snakemake_Profiles/
+[resources-and-group-jobs]: https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#resources-and-group-jobs
 [sichong-post]: https://www.sichong.site/workflow/2021/11/08/how-to-manage-workflow-with-resource-constraint.html
 [slurm-official]: https://github.com/Snakemake-Profiles/slurm
 [snakemake-aws-parallelcluster-slurm]: https://github.com/cbrueffer/snakemake-aws-parallelcluster-slurm
