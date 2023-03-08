@@ -1,0 +1,18 @@
+rule example:
+    output:
+        "output/test.txt",
+    log:
+        "explict-logfile.txt",
+    run:
+        import sys
+
+        sys.stdout.write("This was written to stdout\n")
+        sys.stderr.write("This was written to stderr\n")
+
+        outhandle = open(output[0], "w")
+        outhandle.write("This was written to the output file\n")
+        outhandle.close()
+
+        loghandle = open(log[0], "w")
+        loghandle.write("This was written to the log file\n")
+        loghandle.close()

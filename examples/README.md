@@ -30,6 +30,8 @@ them on your cluster to confirm the expected behavior.
 * `out-of-memory` - Trigger an out-of-memory error. Snakemake can handle this by
   default
 
+* `separate-stderr` - Log stdout and stderr to separate files
+
 * `singularity` - Run a rule inside a singularity container
 
 * `shared-logs` - Share the same profile `config.yaml` between multiple

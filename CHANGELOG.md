@@ -17,6 +17,11 @@ Example that uses a job array to submit many jobs at once (`job-array`)
 
 Example that uses `--slurm` (`slurm-native`, requires Snakemake 7.19.0+)
 
+Example that logs stdout and stderr to separate files (`separate-stderr`)
+([Issue #14][issue-14])
+
+[issue-14]: https://github.com/jdblischak/smk-simple-slurm/issues/14
+
 ## v1.3.0 - 2022-08-09
 
 New status script `status-sacct-robust.sh` that re-runs `sacct` multiple times
