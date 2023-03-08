@@ -30,12 +30,14 @@ them on your cluster to confirm the expected behavior.
 * `out-of-memory` - Trigger an out-of-memory error. Snakemake can handle this by
   default
 
-* `separate-stderr` - Log stdout and stderr to separate files
+* `pinned-conda-envs` - Pin packages in conda environments
 
-* `singularity` - Run a rule inside a singularity container
+* `separate-stderr` - Log stdout and stderr to separate files
 
 * `shared-logs` - Share the same profile `config.yaml` between multiple
   pipelines, but include the name of the Snakefile in the path to the log files
+
+* `singularity` - Run a rule inside a singularity container
 
 * `slurm-native` - Use Snakemake's native Slurm support (`--slurm`, requires
   Snakemake 7.19.0+)
