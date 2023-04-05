@@ -1,10 +1,10 @@
 # Specify a resource conditionally
 
 Sometimes you only need an argument to `sbatch` in certain circumstances. For
-example, if your cluster has lots of partitions, it may be preferable to allow
-SLURM to select a partition based on requested resources such as
+example, if your cluster has lots of partitions, you may want
+SLURM to select a partition based on job resources like
 `cpus-per-task`, `mem` and `time`, without specifying the partition explicitly.
-In this case you want Snakemake to submit the job without the `--partition`
+In this case you wound need Snakemake to submit the job without the `--partition`
 argument.
 
 The following profile uses an empty `partitionFlag` by default.
