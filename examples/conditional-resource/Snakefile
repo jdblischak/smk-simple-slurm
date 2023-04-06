@@ -1,0 +1,8 @@
+
+rule withPartitionFlag:
+    resources:
+        partitionFlag="--partition=aSpecificPartition",
+    shell: echo "executed on aSpecificPartition"
+ 
+rule withoutPartitionFlag:
+    shell: echo "executed on whichever partition Slurm chose"
