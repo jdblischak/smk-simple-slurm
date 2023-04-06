@@ -1,7 +1,10 @@
 rule partition1_only:
     resources:
         partition="partition1",
-    shell: echo "executed on partition1"
- 
+    shell:
+        'echo "executed on partition1"'
+
+
 rule any_partition:
-    shell: echo "executed on whichever partition Slurm chose"
+    shell:
+        'echo "executed on whichever partition Slurm chose"'

@@ -22,6 +22,16 @@ Example that logs stdout and stderr to separate files (`separate-stderr`)
 
 [issue-14]: https://github.com/jdblischak/smk-simple-slurm/issues/14
 
+Example that conditionally specifies a resource for a subset of rules
+([TomHarrop][], [#16][issue-16], [#17][pr-17])
+
+Example that lists multiple partitions for Slurm to choose from ([TomHarrop][],
+[#16][issue-16], [#17][pr-17])
+
+[TomHarrop]: https://github.com/TomHarrop
+[issue-16]: https://github.com/jdblischak/smk-simple-slurm/issues/16
+[pr-17]: https://github.com/jdblischak/smk-simple-slurm/pull/17
+
 ## v1.3.0 - 2022-08-09
 
 New status script `status-sacct-robust.sh` that re-runs `sacct` multiple times

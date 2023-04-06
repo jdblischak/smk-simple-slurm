@@ -6,6 +6,9 @@ them on your cluster to confirm the expected behavior.
 * `cluster-cancel` - Cancel all submitted jobs with `scancel` when the main
   Snakemake process is cancelled (requires Snakemake 7.0.0+)
 
+* `conditional-resource` - Conditionally specify a resource for a subset of
+  rules
+
 * `dynamic-resources` - Increase memory for a rule on restart after each failed
   attempt
 
@@ -16,6 +19,8 @@ them on your cluster to confirm the expected behavior.
 
 * `jobs-per-second` - Measure how many jobs Snakemake can submit to Slurm per
   second
+
+* `list-partitions` - List multiple partitions for Slurm to choose from
 
 * `log-file-date` - Insert the current date into the log file path
 

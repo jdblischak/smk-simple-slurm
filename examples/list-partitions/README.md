@@ -31,8 +31,16 @@ You can still specify a partition for jobs in the Snakefile as usual:
 rule partition1_only:
     resources:
         partition="partition1",
-    shell: echo "executed on partition1"
- 
+    shell:
+        'echo "executed on partition1"'
+
+
 rule any_partition:
-    shell: echo "executed on whichever partition Slurm chose"
+    shell:
+        'echo "executed on whichever partition Slurm chose"'
+
 ```
+
+**Note:** This example was inspired by the discussion in [Issue #16][issue-16]
+
+[issue-16]: https://github.com/jdblischak/smk-simple-slurm/issues/16

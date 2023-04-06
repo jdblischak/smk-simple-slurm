@@ -30,8 +30,16 @@ adding the `partitionFlag` resource to the rule, as in the following Snakefile:
 rule withPartitionFlag:
     resources:
         partitionFlag="--partition=aSpecificPartition",
-    shell: echo "executed on aSpecificPartition"
- 
+    shell:
+        'echo "executed on aSpecificPartition"'
+
+
 rule withoutPartitionFlag:
-    shell: echo "executed on whichever partition Slurm chose"
+    shell:
+        'echo "executed on whichever partition Slurm chose"'
+
 ```
+
+**Note:** This example was inspired by the discussion in [Issue #16][issue-16]
+
+[issue-16]: https://github.com/jdblischak/smk-simple-slurm/issues/16
