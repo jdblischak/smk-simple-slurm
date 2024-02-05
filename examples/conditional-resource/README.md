@@ -11,12 +11,12 @@ The following profile uses an empty `partitionFlag` by default.
 ```yaml
 cluster:
   sbatch
-    {resources.partitionFlag}
-    --qos={resources.qos}
-    --cpus-per-task={threads}
-    --mem={resources.mem_mb}
-    --job-name=smk-{rule}-{wildcards}
-    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+  {resources.partitionFlag}
+  --qos={resources.qos}
+  --cpus-per-task={threads}
+  --mem={resources.mem_mb}
+  --job-name=smk-{rule}-{wildcards}
+  --output=logs/{rule}/{rule}-{wildcards}-%j.out
 default-resources:
   - partitionFlag=""
   - qos=<name-of-quality-of-service>
@@ -26,7 +26,7 @@ default-resources:
 You may need to specify the partition for certain jobs. This can be done by
 adding the `partitionFlag` resource to the rule, as in the following Snakefile:
 
-```python
+```snakemake
 rule withPartitionFlag:
     resources:
         partitionFlag="--partition=aSpecificPartition",
