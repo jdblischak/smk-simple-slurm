@@ -5,7 +5,7 @@ snakemake.utils.min_version("7.0.0")
 
 rule all:
     input:
-        expand("output/{iteration}.txt", iteration=range(100)),
+        expand("output/{iteration}.txt",iteration=range(100)),
 
 
 rule sleeper:
@@ -13,6 +13,6 @@ rule sleeper:
         "output/{iteration}.txt",
     shell:
         """
-        sleep 180s
+        sleep 180
         touch {output}
         """

@@ -1,4 +1,4 @@
-cluster:
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
   --job-name=smk-{rule}-{wildcards}
@@ -6,5 +6,5 @@ cluster:
   --parsable # Required to pass job IDs to scancel
 jobs: 100
 printshellcmds: True
-cluster-cancel: scancel
-cluster-cancel-nargs: 50
+cluster-generic-cancel-cmd: scancel
+cluster-generic-cancel-nargs: 50
