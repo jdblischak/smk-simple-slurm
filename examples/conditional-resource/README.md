@@ -9,7 +9,24 @@ submit the job without the `--partition` argument.
 The following profile uses an empty `partitionFlag` by default.
 
 ```yaml
+# snakemake < 8.0
 cluster:
+  sbatch
+  {resources.partitionFlag}
+  --qos={resources.qos}
+  --cpus-per-task={threads}
+  --mem={resources.mem_mb}
+  --job-name=smk-{rule}-{wildcards}
+  --output=logs/{rule}/{rule}-{wildcards}-%j.out
+default-resources:
+  - partitionFlag=""
+  - qos=<name-of-quality-of-service>
+  - mem_mb=1000
+```
+
+```yaml
+# snakemake > 8.0
+cluster-generic-submit-cmd:
   sbatch
   {resources.partitionFlag}
   --qos={resources.qos}
