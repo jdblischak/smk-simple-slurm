@@ -1,5 +1,10 @@
 ## dev
 
+## v1.4.0 - 2024-03-18
+
+> [!WARNING]
+> This is the final release to support Snakemake versions 5, 6, and 7.
+
 Example that specifies memory in GB instead of MB (`mem-gb`)
 
 Example that shares a profile between pipelines, and includes the name of the

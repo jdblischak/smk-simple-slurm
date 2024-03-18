@@ -18,6 +18,15 @@ profile for Snakemake][slurm-official]. For more background, this [blog
 post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
 `--cluster-config`.
 
+> [!WARNING]
+> The Slurm profile and documentation in this repository currently support
+> Snakemake versions >= 5.15.0 and < 8.0.0. This is because Snakemake 8
+> completely overhauled how it submits jobs to external clusters, which broke
+> this and all the other existing profiles. We are in the process of updating
+> the documentation to support Snakemake 8 (please help contribute if you can).
+> If you plan to continue to use Snakemake 7, you can find the Snakemake 7
+> version of the docs in the [v7 branch of this repository][v7].
+
 ## Features
 
 * Only requires a single configuration file to get started submitting jobs to
@@ -349,3 +358,4 @@ warranties. To make it official, it's released under the [CC0][] license. See
 [sichong-post]: https://www.sichong.site/workflow/2021/11/08/how-to-manage-workflow-with-resource-constraint.html
 [slurm-official]: https://github.com/Snakemake-Profiles/slurm
 [snakemake-aws-parallelcluster-slurm]: https://github.com/cbrueffer/snakemake-aws-parallelcluster-slurm
+[v7]: https://github.com/jdblischak/smk-simple-slurm/tree/v7
