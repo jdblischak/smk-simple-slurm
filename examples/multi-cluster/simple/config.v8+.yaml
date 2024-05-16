@@ -1,0 +1,12 @@
+cluster-generic-submit-cmd:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --clusters={resources.clusters}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+    --parsable
+default-resources:
+  - clusters=slurm_cluster
+jobs: 1
+printshellcmds: True
+cluster-generic-status-cmd: status-sacct-multi.sh

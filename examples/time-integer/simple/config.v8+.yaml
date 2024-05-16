@@ -1,0 +1,10 @@
+cluster-generic-submit-cmd:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --time={resources.time}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+default-resources:
+  - time=5
+jobs: 2
+printshellcmds: True

@@ -1,0 +1,12 @@
+cluster-generic-submit-cmd:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --cpus-per-task={threads}
+    --mem={resources.mem_mb}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+    --error=logs/{rule}/{rule}-{wildcards}-%j.err
+    --parsable
+default-resources:
+  - mem_mb=100
+jobs: 50

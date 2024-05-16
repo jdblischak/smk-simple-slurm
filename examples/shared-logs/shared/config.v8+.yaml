@@ -1,0 +1,10 @@
+cluster-generic-submit-cmd:
+  mkdir -p logs/`basename {workflow.main_snakefile}`/{rule} &&
+  sbatch
+    --mem={resources.mem_mb}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/`basename {workflow.main_snakefile}`/{rule}/{rule}-{wildcards}-%j.out
+default-resources:
+  - mem_mb=2000
+jobs: 50
+printshellcmds: True

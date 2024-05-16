@@ -1,0 +1,18 @@
+cluster-generic-submit-cmd:
+  mkdir -p logs/ &&
+  sbatch
+    --cpus-per-task={threads}
+    --mem={resources.mem_mb}
+    --output=logs/%j.out
+default-resources:
+  - mem_mb=1000
+jobs: 500
+keep-going: True
+rerun-incomplete: True
+printshellcmds: True
+cores: 14
+groups:
+  - exampleRuleToGroup=groupjob
+group-components:
+  - groupjob=100
+max-jobs-per-second: 25

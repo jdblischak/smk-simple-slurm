@@ -1,0 +1,11 @@
+cluster-generic-submit-cmd:
+  mkdir -p logs/{rule} &&
+  sbatch
+    --cpus-per-task={threads}
+    --job-name=smk-{rule}-{wildcards}
+    --output=logs/{rule}/{rule}-{wildcards}-%j.out
+jobs: 10
+printshellcmds: True
+jobscript: slurm_jobscript.sh
+use-conda: False
+software-deployment-method: apptainer
