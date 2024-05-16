@@ -9,6 +9,7 @@ submit the job without the `--partition` argument.
 The following profile uses an empty `partitionFlag` by default.
 
 ```yaml
+executor: cluster-generic
 cluster-generic-submit-cmd:
   sbatch
   {resources.partitionFlag}
@@ -19,7 +20,7 @@ cluster-generic-submit-cmd:
   --output=logs/{rule}/{rule}-{wildcards}-%j.out
 default-resources:
   - partitionFlag=""
-  - qos=<name-of-quality-of-service>
+  - qos=short
   - mem_mb=1000
 ```
 
