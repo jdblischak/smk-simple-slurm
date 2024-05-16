@@ -2,3 +2,4 @@ logs/
 output/
 .snakemake/
 .idea
+.DS_Store
