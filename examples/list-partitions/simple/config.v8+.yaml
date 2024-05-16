@@ -1,4 +1,4 @@
----
+executor: cluster-generic
 cluster:
   sbatch
     --partition={resources.partition}

@@ -1,9 +1,10 @@
-cluster-generic-submit-cmd:
-  mkdir -p logs/{rule} &&
+executor: cluster-generic
+cluster-generic-submit-cmd: mkdir -p logs/{rule} &&
   sbatch
   --job-name=smk-{rule}-{wildcards}
   --output=logs/{rule}/{rule}-{wildcards}-%j.out
   --parsable # Required to pass job IDs to scancel
+
 jobs: 100
 printshellcmds: True
 cluster-generic-cancel-cmd: scancel

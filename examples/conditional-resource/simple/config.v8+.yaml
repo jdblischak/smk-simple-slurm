@@ -1,4 +1,4 @@
----
+executor: cluster-generic
 cluster-generic-submit-cmd:
   sbatch
   {resources.partitionFlag}

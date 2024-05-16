@@ -1,3 +1,4 @@
+executor: cluster-generic
 cluster-generic-submit-cmd:
   mkdir -p logs/`basename {workflow.main_snakefile}`/{rule} &&
   sbatch
