@@ -1,17 +1,17 @@
 # Cluster status scripts
 
 If snakemake is having trouble detecting job failures, you can provide a custom
-script to `--cluster-status`. You can either do this at the command-line or add
-it to your `config.yml`.
+script to `--cluster-generic-status-cmd`. You can either do this at the command-line or add
+it to your `config.v8+.yml`.
 
 **Important:** To use any of these, you must add the flag `--parsable` to the
-call to `sbatch` in the field `cluster` in `config.yml`
+call to `sbatch` in the field `cluster-generic-submit-cmd` in `config.v8+.yml`
 
 **Important:** These scripts must be executable: `chmod +x <script>`
 
 Sources:
 
-* [Snakemake documentation for `--cluster-status`][cluster-status]
+* [Snakemake documentation for `--cluster-generic-status-cmd`][cluster-status]
 * [`slurm-status.py` from official Slurm profile][slurm-status.py]
 
 Scripts:
@@ -38,5 +38,6 @@ following available status scripts:
 
 * [`slurm-status.py`][slurm-status.py] from the official profile
 
-[cluster-status]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-status
+[cluster-status]: https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#cluster-or-cloud-execution
 [slurm-status.py]: https://github.com/Snakemake-Profiles/slurm/blob/master/%7B%7Bcookiecutter.profile_name%7D%7D/slurm-status.py
+0
