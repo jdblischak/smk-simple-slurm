@@ -8,6 +8,7 @@ cluster-generic-submit-cmd:
     --mem={resources.mem_mb}
     --job-name=smk-{rule}-{wildcards}
     --output=logs/{rule}/{rule}-{wildcards}-%j.out
+    --parsable
 default-resources:
   - partition=<name-of-default-partition>
   - qos=<name-of-quality-of-service>
