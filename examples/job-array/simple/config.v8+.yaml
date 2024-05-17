@@ -7,6 +7,7 @@ cluster-generic-submit-cmd:
     --output=logs/{rule}/{rule}-{wildcards}-%j.out
 default-resources:
   - mem_mb=100
+
 jobs: 1000
 keep-going: True
 rerun-incomplete: True
