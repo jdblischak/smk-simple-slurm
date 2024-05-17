@@ -1,5 +1,5 @@
 executor: cluster-generic
-cluster:
+cluster-generic-submit-cmd:
   sbatch
     --partition={resources.partition}
     --qos={resources.qos}
