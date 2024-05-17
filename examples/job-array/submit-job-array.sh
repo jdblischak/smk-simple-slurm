@@ -4,9 +4,7 @@ set -e
 # Submit the Snakemake rules as a single job array
 
 snakemake --summary > snakemake-summary.txt
-awk --field-separator \
-  '\t' '$3 == "process" && $7 == "update pending" {print $1}' \
-  snakemake-summary.txt > files.txt
+awk --field-separator '\t' '$3 == "process" && $6 == "update pending" {print $1}' snakemake-summary.txt > files.txt
 
 n=$(cat files.txt | wc -l)
 echo "Submitting job array to create $n files"
