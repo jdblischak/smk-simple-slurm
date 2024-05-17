@@ -4,8 +4,9 @@ By default, both stdout and stderr are written to the same log file. If you'd
 prefer to write stdout and stderr to separate files, you can pass the flag
 `--error` in addition to `--output`
 
-```
-cluster:
+```yaml
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --output=logs/{rule}/{rule}-{wildcards}-%j.out
