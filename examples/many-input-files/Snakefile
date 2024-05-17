@@ -15,7 +15,7 @@ rule all:
 
 rule combine:
     input:
-        expand(f"{outdir}/{rep}.txt", rep=range(1, n + 1)),
+        expand(f"{outdir}/{{rep}}.txt", rep=range(1, n + 1)),
     output:
         f"{outdir}/combine.txt",
     shell:
@@ -24,6 +24,6 @@ rule combine:
 
 rule many:
     output:
-        f"{outdir}/{file}",
+        f"{outdir}/{{file}}",
     shell:
         "touch {output}"
