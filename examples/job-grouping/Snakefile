@@ -1,6 +1,6 @@
 import snakemake.utils
 
-snakemake.utils.min_version("7.11")
+snakemake.utils.min_version("8.0.0")
 
 n = 1000
 
