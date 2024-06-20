@@ -6,8 +6,5 @@ channels:
 dependencies:
   - snakedeploy
   - snakefmt
-  - snakemake>=5.15.0
-  - pip
-  
-  - pip:
-      - snakemake-executor-plugin-cluster-generic
+  - snakemake>=8
+  - snakemake-executor-plugin-cluster-generic
