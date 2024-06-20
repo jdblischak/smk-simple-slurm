@@ -24,11 +24,10 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
 `--cluster-config`.
 
 > [!WARNING]
-> The Slurm profile and documentation in this repository currently support
-> Snakemake versions >= 5.15.0 and < 8.0.0. This is because Snakemake 8
+> The Slurm profile and documentation in this repository have been updated to only support
+> Snakemake versions >= 8.0.0. This is because Snakemake 8
 > completely overhauled how it submits jobs to external clusters, which broke
-> this and all the other existing profiles. We are in the process of updating
-> the documentation to support Snakemake 8 (please help contribute if you can).
+> this and all the other existing profiles.
 > If you plan to continue to use Snakemake 7, you can find the Snakemake 7
 > version of the docs in the [v7 branch of this repository][v7].
 
