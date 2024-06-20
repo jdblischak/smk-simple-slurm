@@ -1,4 +1,5 @@
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --partition={resources.partition}
@@ -7,6 +8,7 @@ cluster:
     --mem={resources.mem_mb}
     --job-name=smk-{rule}-{wildcards}
     --output=logs/{rule}/{rule}-{wildcards}-%j.out
+    --parsable
 default-resources:
   - partition=<name-of-default-partition>
   - qos=<name-of-quality-of-service>

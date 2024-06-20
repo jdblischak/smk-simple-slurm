@@ -1,4 +1,5 @@
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --mem={resources.mem_gb}G

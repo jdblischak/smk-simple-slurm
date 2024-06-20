@@ -1,4 +1,5 @@
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --mem={resources.mem_mb}
@@ -7,5 +8,4 @@ cluster:
 default-resources:
   - mem_mb=1000
 jobs: 1
-restart-times: 3
 printshellcmds: True

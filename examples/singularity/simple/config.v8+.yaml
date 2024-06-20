@@ -1,4 +1,5 @@
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --cpus-per-task={threads}
@@ -8,4 +9,4 @@ jobs: 10
 printshellcmds: True
 jobscript: slurm_jobscript.sh
 use-conda: False
-use-singularity: True
+software-deployment-method: apptainer

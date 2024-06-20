@@ -1,8 +1,8 @@
 # Specify a list of partitions
 
 You can allow your job to run on more than one SLURM partition. In this case,
-SLURM will choose which partition to run your job on. From the `sbatch`
-manpage:
+SLURM will choose which partition to run your job on.  
+From the `sbatch` manpage:
 
 > If the job can use more than one partition, specify their names in a comma
   separate list and the one offering earliest initiation will be used with no
@@ -11,7 +11,8 @@ manpage:
 
 
 ```yaml
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   sbatch
     --partition={resources.partition}
     --qos={resources.qos}

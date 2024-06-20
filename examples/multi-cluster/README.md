@@ -16,7 +16,7 @@ rule cluster_name:
         clusters="<cluster-name>",
 ```
 
-You can also change the default cluster in `simple/config.yaml`:
+You can also change the default cluster in `simple/config.v8+.yaml`:
 
 ```yaml
 default-resources:

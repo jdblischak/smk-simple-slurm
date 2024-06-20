@@ -1,4 +1,5 @@
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/`date +"%d-%m-%y"`/{rule} &&
   sbatch
     --cpus-per-task={threads}

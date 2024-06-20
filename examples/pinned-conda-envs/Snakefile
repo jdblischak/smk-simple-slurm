@@ -1,6 +1,6 @@
 import snakemake.utils
 
-snakemake.utils.min_version("7.8.0")
+snakemake.utils.min_version("8.0.0")
 
 
 rule all:

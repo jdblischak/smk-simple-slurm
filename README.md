@@ -1,15 +1,20 @@
 # Simple Slurm
 
-> A simple Snakemake profile for Slurm without `--cluster-config`
+> A simple Snakemake profile for Slurm without `--cluster-generic-*-cmd`
 
-* [Features](#features)
-* [Limitations](#limitations)
-* [Quick start](#quick-start)
-* [Customizations](#customizations)
-* [Use speed with caution](#use-speed-with-caution)
-* [License](#license)
+- [Simple Slurm](#simple-slurm)
+  - [Features](#features)
+  - [Limitations](#limitations)
+  - [Quick start](#quick-start)
+  - [Customizations](#customizations)
+    - [A fixed argument to `sbatch`, e.g. `--account`](#a-fixed-argument-to-sbatch-eg---account)
+    - [A variable argument to `sbatch`, e.g. `--time`](#a-variable-argument-to-sbatch-eg---time)
+    - [Using a cluster status script](#using-a-cluster-status-script)
+    - [Multiple clusters](#multiple-clusters)
+  - [Use speed with caution](#use-speed-with-caution)
+  - [License](#license)
 
-The option [`--cluster-config`][cluster-config] is deprecated, but it's still
+The option [`--cluster-config`][cluster-config] is removed in `snakemake>8.0.0`, but it's still
 possible to set default and rule-specific resources for [submitting jobs to a
 remote scheduler][cluster-execution] using a combination of
 `--default-resources` and the `resources` field in individual rules. This
@@ -45,14 +50,14 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
   of jobs (however, please see the section [Use speed with
   caution](#use-speed-with-caution))
 
-* No reliance on the deprecated option `--cluster-config` to customize job
-  resources
+* No reliance on the now-removed option `--cluster-config` or hard-to-read command-line flags (`--cluster-generic-*-cmd`)
+  to customize job resources
 
 * By default it relies on Snakemake's built-in ability to understand the job
   statuses PENDING, RUNNING, COMPLETING, and OUT_OF_MEMORY
 
 * (Optional, but recommended) You can pass a simple script (see
-  [`extras/`](extras/)) to [`--cluster-status`][cluster-status] to additionally
+  [`extras/`](extras/)) to [`--cluster-generic-status-cmd`][cluster-status] to additionally
   handle the job statuses TIMEOUT and CANCELED
 
 * **New** Support for [cluster-cancel][] feature introduced in Snakemake 7.0.0
@@ -88,13 +93,13 @@ post][sichong-post] by Sichong Peng nicely explains this strategy for replacing
   e.g. `--output=logs/{rule}/{rule}-%j.out`.
   Note that you can still submit wildcards containing `/` to `--job-name`
 
-* Requires Snakemake version 5.15.0 or later (released 2020-04-21, see
-  [changelog][]). You can test this directly in your `Snakefile` with
-  [`min_version()`][min_version]
+* Requires Snakemake version 8.0.0 or later (released 2023-12-20, see
+  [changelog](https://github.com/snakemake/snakemake/blob/main/CHANGELOG.md#800-2023-12-20)). You can test this directly in your `Snakefile` with
+  [`min_version()`][min_version]. If you require an older version of Snakemake, please see the [`v7` branch](https://github.com/jdblischak/smk-simple-slurm/tree/v7)
 
 ## Quick start
 
-1. Download the configuration file [`config.yaml`](simple/config.yaml) to your
+1. Download the configuration file [`config.v8+.yaml`](simple/config.v8+.yaml) to your
    Snakemake project. It has to be in a subdirectory, e.g. `simple/`
 
 1. Open it in your favorite text editor and replace all the placeholders
@@ -125,11 +130,11 @@ on your cluster.
 
 To pass an additional argument to `sbatch` that will be fixed across all job
 submissions, add it directly to the arguments passed to `sbatch` in the field
-`cluster`. For example, to specify an account to use for all job submissions,
-you can add the `--account` argument as shown below:
+`cluster-generic-submit-cmd`. For example, to specify an account to use for all job submissions, you can add the `--account` argument as shown below:
 
 ```yaml
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --partition={resources.partition}
@@ -148,13 +153,14 @@ add it to the arguments passed to `sbatch` in the field `cluster`, list a
 default value in the field `default-resources`, and update any rules that
 require a value different from the default.
 
-For example, the `config.yaml` below sets a default time of 1 hour, and the
+For example, the `config.v8+.yaml` below sets a default time of 1 hour, and the
 example rule overrides this default for a total of 3 hours. Note that the quotes
 around the default time specification are required, even though you don't need
 quotes when specifying the default for either `partition` or `qos`.
 
 ```yaml
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --partition={resources.partition}
@@ -190,7 +196,8 @@ it's not required. From Slurm 19.05.7:
 Thus to instead use `minutes`, you could achieve the same effect as above with:
 
 ```yaml
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --partition={resources.partition}
@@ -230,7 +237,7 @@ configuration step.
 
 However, if you start to have jobs silently fail often, e.g. with status
 `TIMEOUT` for exceeding their time limit, then you can add a custom script to
-monitor the job status with the option [`--cluster-status`][cluster-status].
+monitor the job status with the option [`--cluster-generic-status-cmd`][cluster-status].
 
 The directory [`extras/`](extras/) contains multiple options for checking the
 status of the jobs. You can choose which one you'd like to use:
@@ -239,7 +246,7 @@ status of the jobs. You can choose which one you'd like to use:
   documentation][cluster-status]. It uses `sacct` to query the status of each
   job by its ID
 
-* `status-sacct.sh` - (recommended) This is a Bash translation of the example
+* `status-sacct.sh` - (**recommended**) This is a Bash translation of the example
   from the [Snakemake documentation][cluster-status]. The Python script is
   simply shell-ing out to `sacct`, so running Bash directly removes the overhead
   of repeatedly starting Python each time you check a job
@@ -259,8 +266,7 @@ To use one of these status scripts:
 
 1. Make the script executable, e.g. `chmod +x status-sacct.sh`
 
-1. Add the field `cluster-status` to your `config.yaml`, e.g. `cluster-status:
-   status-sacct.sh`
+1. Add the field `cluster-generic-status-cmd` to your `config.yaml`, e.g. `cluster-generic-status-cmd: status-sacct.sh`
 
 1. Add the flag `--parsable` to your `sbatch` command (requires Slurm version
    14.03.0rc1 or later)
@@ -281,7 +287,9 @@ documentation below.
    to submit your jobs to either cluster "c1" or "c2"
 
     ```yaml
-    cluster:
+    # config.v8+.yaml
+    executor: cluster-generic
+    cluster-generic-submit-cmd:
       mkdir -p logs/{rule} &&
       sbatch
         --clusters=c1,c2
@@ -292,8 +300,9 @@ documentation below.
    specific rule:
 
     ```yaml
-    # config.yaml
-    cluster:
+    # config.v8+.yaml
+    executor: cluster-generic
+    cluster-generic-submit-cmd:
       mkdir -p logs/{rule} &&
       sbatch
         --clusters={resources.clusters}
@@ -309,8 +318,7 @@ documentation below.
     ```
 
 1. Using a custom cluster status script in a multi-cluster setup requires
-   Snakemake 7.1.1+. After you add the flag `--parsable` to `sbatch`, it will
-   return `jobid;cluster_name`. I adapted `status-sacct.sh` to handle this
+   Snakemake 7.1.1+ (or Snakemake 8.0.0+ if you are using the new `--cluster-generic-*-cmd` flags). After you add the flag `--parsable` to `sbatch`, it will return `jobid;cluster_name`. I adapted `status-sacct.sh` to handle this
    situation. Please see [`examples/multi-cluster/`](examples/multi-cluster) to
    try out `status-sacct-multi.sh`
 

@@ -10,13 +10,13 @@ snakemake --profile simple/
 ## A note on containers
 
 This example relies on the user having some method for obtaining docker images that can be converted to singularity images. This example uses a [publicly available dockerhub R image](https://hub.docker.com/r/rocker/r-ver).  A major caveat of using dockerhub is that if you run this example on a widely use cluster it is possible you will get an error like:
-```
+
+```log
 Building DAG of jobs...
 Pulling singularity image docker://rocker/r-ver.
 WorkflowError:
 Failed to pull singularity image from docker://rocker/r-ver:
-FATAL:   While making image from oci registry: error fetching image to cache: failed to get checksum for docker://rocker/r-ver: Error reading manifest latest in docker.io/rocker/r-ver: toomanyrequests: You have rea
-ched your pull rate limit. You may increase the limit by authenticating and upgrading: https://www.docker.com/increase-rate-limit
+FATAL:   While making image from oci registry: error fetching image to cache: failed to get checksum for docker://rocker/r-ver: Error reading manifest latest in docker.io/rocker/r-ver: toomanyrequests: You have reached your pull rate limit. You may increase the limit by authenticating and upgrading: https://www.docker.com/increase-rate-limit
 ```
 
 If you get this error this means that you will likely need an alternate means of obtaining docker images.  One good option is to build and host your container using the [GitHub Container Regsitry](https://github.com/features/packages).  

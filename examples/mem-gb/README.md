@@ -5,14 +5,14 @@ MB. However, you can change this by appending a unit to the argument. For GB,
 you can append `g`, `G`, or `GB`. This example uses `G` to specify the memory in
 GB.
 
-The default `config.yaml` provided by smk-simple-slurm uses MB, but you can
+The default `config.v8+.yaml` provided by smk-simple-slurm uses MB, but you can
 switch to using GB with the following steps:
 
-* Append a `G` to the argument `--mem` in `config.yaml`
-* Change the value in `default-resources` in `config.yaml` from `1000` to `1`
+* Append a `G` to the argument `--mem` in `config.v8+.yaml`
+* Change the value in `default-resources` in `config.v8+.yaml` from `1000` to `1`
   (or any other reasonable value of GB)
 * (Recommended) Change all instances of `mem_mb` to `mem_gb` in both
-  `config.yaml` and the `Snakefile`. This isn't technically required since the
+  `config.v8+.yaml` and the `Snakefile`. This isn't technically required since the
   only requirement is consistency, but `mem_gb` will make the pipeline
   configuration more interpretable others, including future you
 

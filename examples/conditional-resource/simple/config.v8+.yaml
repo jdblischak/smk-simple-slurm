@@ -1,0 +1,15 @@
+executor: cluster-generic
+cluster-generic-submit-cmd:
+  sbatch
+  {resources.partitionFlag}
+  --qos={resources.qos}
+  --cpus-per-task={threads}
+  --mem={resources.mem_mb}
+  --job-name=smk-{rule}-{wildcards}
+  --output=logs/{rule}/{rule}-{wildcards}-%j.out
+default-resources:
+  - partitionFlag=""
+  - qos=short
+  - mem_mb=1000
+
+jobs: 10

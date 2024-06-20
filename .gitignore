@@ -1,3 +1,7 @@
 logs/
 output/
 .snakemake/
+
+.idea
+.vscode
+.DS_Store

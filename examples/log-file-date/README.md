@@ -2,11 +2,12 @@
 
 If you regularly re-run your pipeline, you may want to organize the log files by
 date. This can be achieved by inserting `date +"%d-%m-%y"` into the `cluster`
-field in `config.yaml`, both in the call to `mkdir` and to the `--output` flag
+field in `config.v8+.yaml`, both in the call to `mkdir` and to the `--output` flag
 for `sbatch`.
 
-```
-cluster:
+```yaml
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/`date +"%d-%m-%y"`/{rule} &&
   sbatch
     --output=logs/`date +"%d-%m-%y"`/{rule}/{rule}-{wildcards}-%j.out

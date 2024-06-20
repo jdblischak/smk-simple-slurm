@@ -4,14 +4,14 @@ If you have a rule with many thousands of input files, your submitted job may
 fail because the [job script is too
 large](https://bugs.schedmd.com/show_bug.cgi?id=2198):
 
-```
+```log
 sbatch: error: Batch job submission failed: Pathname of a file, directory or other parameter too long
 ```
 
 This is because the default jobscript injects all the properties directly into
 the subitted job script:
 
-```
+```bash
 $ cat $CONDA_PREFIX/lib/python3.9/site-packages/snakemake/executors/jobscript.sh
 #!/bin/sh
 # properties = {properties}
@@ -47,7 +47,7 @@ snakemake --profile simple/
 ```
 
 To instead reproduce the Slurm error, comment out the field `jobscript` in
-`simple/config.yaml`.
+`simple/config.v8+.yaml`.
 
 **Note:** If your rule that has many input files isn't computationally
 intensive, e.g. it simply concatenates all the files, then the _most_ simple

@@ -1,4 +1,5 @@
-cluster:
+executor: cluster-generic
+cluster-generic-submit-cmd:
   mkdir -p logs/{rule} &&
   sbatch
     --mem={resources.mem_mb}
@@ -7,8 +8,7 @@ cluster:
 default-resources:
   - mem_mb=100
 jobs: 1000
-keep-going: True
-rerun-incomplete: True
+printshellcmds: True
 scheduler: greedy
 # It doesn't get close to these max limits. It is effectively letting them be
 # unconstrained.
