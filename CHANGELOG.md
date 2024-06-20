@@ -1,5 +1,14 @@
 ## dev
 
+## v2.0.0 - 2024-06-20
+
+The profile has been updated to use the cluster submission features introduced
+in Snakemake 8+ ([JoshLoecker][], [#21][issue-21], [#23][pr-23])
+
+[JoshLoecker]: https://github.com/JoshLoecker
+[issue-21]: https://github.com/jdblischak/smk-simple-slurm/issues/21
+[pr-23]: https://github.com/jdblischak/smk-simple-slurm/pull/23
+
 ## v1.4.0 - 2024-03-18
 
 > [!WARNING]
